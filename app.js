@@ -1,7 +1,7 @@
 const express = require('express')
 const checkPinCodeServicable = require('./services/PinCode')
 const app = express()
-
+const port = process.env.PORT || 3000
 app.get('', (req, res) => {
     console.log(req.query)
     const d = checkPinCodeServicable(req.query, (error, data) => {
@@ -12,6 +12,6 @@ app.get('', (req, res) => {
     });
 })
 
-app.listen(3000, () => {
+app.listen(port, () => {
     console.log("Server is started")
 })
