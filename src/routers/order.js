@@ -10,9 +10,9 @@ router.post('/order', auth, async (req, res) => {
     })
     try {
         await task.save()
-        res.status(201).send(task)
+        res.send(task)
     } catch (e) {
-        res.status(400).send(e)
+        res.send(e)
     }
 })
 
@@ -21,7 +21,7 @@ router.get('/order', auth, async (req, res) => {
         await req.user.populate('Order').execPopulate()
         res.send(req.user.Order)
     } catch (e) {
-        res.status(500).send()
+        res.send(e)
     }
 })
 module.exports = router
