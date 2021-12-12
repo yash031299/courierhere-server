@@ -22,7 +22,7 @@ app.use(pinRouter)
 app.use(checkRouter)
 app.use(getOrderDetails)
 app.use(getTracking)
-app.use(rechaege)
+app.use(recharge)
 
 app.listen(port, () => {
     console.log('Server is up on port ' + port)
