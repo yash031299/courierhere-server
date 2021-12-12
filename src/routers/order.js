@@ -5,7 +5,7 @@ const router = new express.Router()
 
 router.post('/order', auth, async (req, res) => {
     const task = new Task({
-        ...req.body,
+        ...req.query,
         owner: req.user._id
     })
     try {

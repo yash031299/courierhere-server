@@ -26,7 +26,7 @@ const trackCourier = (trackID, callback) => {
 }
 
 router.get('/tracking', auth, (req, res) => {
-    const d = trackCourier(req.body.trackind_id, (error, data) => {
+    const d = trackCourier(req.query.trackind_id, (error, data) => {
         if (!error) {
             return res.send(data)
         }

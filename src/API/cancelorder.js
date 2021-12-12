@@ -31,7 +31,7 @@ const cancelOrder = (orderId, callback) => {
 }
 
 router.post('/cancel', auth, (req, res) => {
-    const d = cancelOrder(req.body.order_id, (error, data) => {
+    const d = cancelOrder(req.query.order_id, (error, data) => {
         if (!error) {
             return res.send(data)
         }

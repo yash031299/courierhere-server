@@ -4,7 +4,7 @@ const auth = require('../middleware/auth')
 const router = new express.Router()
 
 router.post('/users', async (req, res) => {
-    const user = new User(req.body)
+    const user = new User(req.query)
     try {
         await user.save()
         const token = await user.generateAuthToken()
@@ -16,7 +16,7 @@ router.post('/users', async (req, res) => {
 
 router.post('/users/login', async (req, res) => {
     try {
-        const user = await User.findByCredentials(req.body.email, req.body.password)
+        const user = await User.findByCredentials(req.query.email, req.query.password)
         const token = await user.generateAuthToken()
         res.send({ user, token })
     } catch (e) {
@@ -26,7 +26,7 @@ router.post('/users/login', async (req, res) => {
 
 router.post('/users/logout', auth, async (req, res) => {
     try {
-        req.user.tokens = req.user.tokens.filter((token) => {
+        req.user.tokens = req.query.tokens.filter((token) => {
             return token.token !== req.token
         })
         await req.user.save()
@@ -52,7 +52,7 @@ router.get('/users/me', auth, async (req, res) => {
 })
 
 router.patch('/users/me', auth, async (req, res) => {
-    const updates = Object.keys(req.body)
+    const updates = Object.keys(req.query)
     const allowedUpdates = ['name', 'email', 'password', 'age']
     const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
 

@@ -47,7 +47,7 @@ const checkPinCodeServicable = ({ pickup, delivery, weight }, callback) => {
 }
 
 router.get('/checkCouriers', auth, (req, res) => {
-    const d = checkPinCodeServicable(req.body, (error, data) => {
+    const d = checkPinCodeServicable(req.query, (error, data) => {
         if (!error) {
             return res.send(data)
         }

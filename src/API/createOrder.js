@@ -92,8 +92,7 @@ router.post('/createOrder', auth, async (req, res) => {
     if (req.user.wallet < 100)
         return res.send({ error: "Please recharge your ShipRocket wallet. The minimum required balance is Rs 100" })
 
-    console.log(req.body)
-    const d = createOrder(req.body, async (error, data) => {
+    const d = createOrder(req.query, async (error, data) => {
         if (!error) {
             const { awb_code } = data
             if (awb_code !== undefined) {
