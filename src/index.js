@@ -8,6 +8,7 @@ const pinRouter = require('./API/PinCode')
 const checkRouter = require('./API/checkCourier')
 const getOrderDetails = require('./API/getOrdersDetails')
 const getTracking = require('./API/tracking')
+const recharge = require('./API/recharge')
 
 const app = express()
 const port = process.env.PORT
@@ -21,6 +22,7 @@ app.use(pinRouter)
 app.use(checkRouter)
 app.use(getOrderDetails)
 app.use(getTracking)
+app.use(rechaege)
 
 app.listen(port, () => {
     console.log('Server is up on port ' + port)
