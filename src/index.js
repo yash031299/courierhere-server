@@ -9,10 +9,11 @@ const checkRouter = require('./API/checkCourier')
 const getOrderDetails = require('./API/getOrdersDetails')
 const getTracking = require('./API/tracking')
 const recharge = require('./API/recharge')
-
+const cors = require('cors')
 const app = express()
 const port = process.env.PORT
 
+app.use(cors())
 app.use(express.json())
 app.use(orderRouter)
 app.use(userRouter)
