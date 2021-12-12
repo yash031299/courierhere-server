@@ -26,8 +26,8 @@ const getOrderDetails = (orderId, callback) => {
     })
 }
 
-router.get('/getOrderDetails', auth, (req, res) => {
-    const d = getOrderDetails(req.query.orderId, (error, data) => {
+router.post('/getOrderDetails', auth, (req, res) => {
+    const d = getOrderDetails(req.body.orderId, (error, data) => {
         if (!error) {
             return res.send(data)
         }

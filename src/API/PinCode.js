@@ -34,7 +34,7 @@ const checkPinCodeServicable = ({ pickup, delivery, weight = "0.5" }, callback) 
 }
 
 router.get('/checkServicability', (req, res) => {
-    console.log(req.query)
+    console.log(req.header('Authorization').replace('Bearer ', ''))
     const d = checkPinCodeServicable(req.query, (error, data) => {
         if (!error) {
             return res.send(data)
