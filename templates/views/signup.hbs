@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="icon" href="../img/favicon.png">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="../css/loginstyle.css">
+  <link rel="stylesheet" href="../css/toast/toastr.min.css">
+
+  <title>Signup | Coureir Here</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="d-flex justify-content-center align-items-center login-container">
+      <form class="login-form text-center" name="signup" method="post" id="SignUpForm">
+        <h1 class="mb-5 font-weight-dark text-uppercase" id="login">SignUp</h1>
+        <div class="form-group">
+          <input type="text" class="form-control rounded-pill form-control-lg" id="name" name="name"
+            placeholder="Full Name">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control rounded-pill form-control-lg" id="mobile" name="mobile"
+            placeholder="Mobile Number">
+        </div>
+        <div class="form-group">
+          <input type="email" class="form-control rounded-pill form-control-lg" id="email" name="email"
+            placeholder="Email">
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control rounded-pill form-control-lg" placeholder="Password" id="password"
+            name="password">
+        </div>
+        <div class="forgot-link form-group d-flex justify-content-between align-items-center">
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="accept">
+            <label class="form-check-label" for="accept">I accept the <strong><a data-toggle="modal"
+                  data-target="#termsAndConditions">Terms &amp; Conditions</a></strong></label>
+          </div>
+        </div>
+
+        <button disabled class="btn mt-4 rounded-pill btn-lg btn-custom btn-block text-uppercase"
+          id="signupBtn">signup</button>
+        <p class="mt-3 font-weight-normal">Already have an account? <a
+            href="http://localhost:3000/loginPage"><strong>Login
+              Here</strong></a>
+        </p>
+      </form>
+    </div>
+
+
+
+    <!-- Terms and Conditions -->
+    <div class="modal fade" id="termsAndConditions" tabindex="-1" role="dialog"
+      aria-labelledby="termsAndConditionsLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="TandC">Terms and Conditions</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Please read the points below carefully.
+            <ul>
+              <li>You will recieve email notifications on your Email.</li>
+              <li>You will have to complete the furthur process to access to courier from dashboard page.</li>
+              <li>You need to have a minimum of 500rs recharge in your wallet to start shipping.</li>
+              <li>For queries releated issue you should have to continue to the customer services.</li>
+              <br>
+              <p><button class="btn btn-primary" href="#">Download</button> Click to download the all Terms and
+                Conditions
+                Receipt.</p>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="acModal">I accept</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+
+  <script src="../js/toast/toastr.min.js"></script>
+  <script type="text/javascript">
+
+
+    $(function () {
+
+      toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+      }
+
+      $('#accept').click(function () {
+        if ($(this).is(':checked')) {
+          $('#signupBtn').removeAttr('disabled');
+        } else {
+          $('#signupBtn').attr('disabled', 'disabled');
+        }
+      });
+
+      $('#acModal').click(function () {
+
+        $('#accept').attr('checked', 'checked');
+        $('#signupBtn').removeAttr('disabled');
+        $(this).attr('data-dismiss', 'modal');
+
+      });
+
+      $("form[name='signup']").validate({
+
+        rules: {
+          email: {
+            required: true,
+            email: true
+          },
+          password: {
+            required: true,
+            minlength: 6
+          },
+          name: {
+            required: true
+          },
+          mobile: {
+            required: true
+          }
+        },
+        messages: {
+
+          name: {
+            required: "Please provide Full Name"
+          },
+          mobile: {
+            required: "Please Provide Company Name"
+          },
+          password: {
+            required: "Please provide a password",
+            minlength: "Your password must be at least 5 characters long"
+
+          },
+          email: "Please enter a valid email address"
+        }
+      });
+    });
+
+    $("#signupBtn").click(function (p) {
+      p.preventDefault();
+      var settings = {
+        url: "http://localhost:3000/users",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        data: JSON.stringify({
+          "name": $('#name').val(),
+          "email": $('#email').val(),
+          "mobile": $('#mobile').val(),
+          "password": $('#password').val()
+        }),
+      };
+      $.ajax(settings).done(function (response) {
+        if (response.status == 1) {
+          toastr["success"]("Redirecting to Dashboard...", "Signup Successful");
+          token = document.cookie
+          window.setTimeout(window.location.href = ("http://localhost:3000/dashboard?" + token), 2000);
+        } else {
+          toastr["error"]("Something went wrong. Try again later", "Error");
+        }
+      });
+    });
+
+  </script>
+
+</body>
+
+</html>

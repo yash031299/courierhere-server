@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="../../img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="../../img/favicon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    Dashboard | Courier Here
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+  <link rel="stylesheet" type="text/css"
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <link href="../assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
+  <link rel="stylesheet" href="../../css/toast/toastr.min.css">
+</head>
+
+<body class="">
+  <div class="sidebar" data-color="azure" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
+    <div class="logo"><a href="" class="simple-text logo-normal">
+      </a></div>
+    <div class="sidebar-wrapper">
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link" href="./dashboard.html">
+            <i class="material-icons">dashboard</i>
+            <p>Dashboard</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./usersP.html">
+            <i class="material-icons">person</i>
+            <p>User Profile</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./wallet.html">
+            <i class="material-icons">attach_money</i>
+            <p>Wallet</p>
+          </a>
+        </li>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./address.html">
+            <i class="material-icons">pin_drop</i>
+            <p>Address</p>
+          </a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="./settings.html">
+            <i class="material-icons">settings</i>
+            <p>Setting</p>
+          </a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="./orders.html">
+            <i class="material-icons">ballot</i>
+            <p>Order</p>
+          </a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="./create_order.html">
+            <i class="material-icons">ballot</i>
+            <p>Create Order</p>
+          </a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="./rate.html">
+            <i class="material-icons">web_asset</i>
+            <p>Rate Calculate</p>
+          </a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="./servicable.html">
+            <i class="material-icons">map</i>
+            <p>Servicable Area</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="main-panel">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+      <div class="container-fluid">
+        <div class="navbar-wrapper">
+          <a class="navbar-brand" href="javascript:;"><strong>SETTINGS</strong></a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="navbar-toggler-icon icon-bar"></span>
+          <span class="navbar-toggler-icon icon-bar"></span>
+          <span class="navbar-toggler-icon icon-bar"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end">
+          <form class="navbar-form">
+            <div class="input-group no-border">
+            </div>
+          </form>
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <i class="material-icons">person</i>
+                <p class="d-lg-none d-md-block">
+                  Account
+                </p>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
+                <a class="dropdown-item" href="../../index.html">Go to Homepage</a>
+                <a class="dropdown-item" href="./usersP.html">Profile</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="../../pages/login.html">Log out</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="content">
+      <div class="container-fluid">
+        <form method="post" id="setting">
+          <div class="row">
+            <div class="card card-nav-tabs col-md-4">
+              <div class="card-header card-header-danger">
+                Courier Setting
+              </div>
+              <ul class="list-group list-group-flush">
+
+                <br>
+                <div class="form-check form-check-radio">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="courier" id="air" value="air">
+                    Enable only Air Shipment
+                    <span class="circle">
+                      <span class="check"></span>
+                    </span>
+                  </label>
+                </div>
+                <div class="form-check form-check-radio">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="courier" id="surface" value="surface">
+                    Enable only Surface Shipment
+                    <span class="circle">
+                      <span class="check"></span>
+                    </span>
+                  </label>
+                </div>
+                <div class="form-check form-check-radio">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="courier" id="both" value="both">
+                    Enable Both
+                    <span class="circle">
+                      <span class="check"></span>
+                    </span>
+                  </label>
+                </div>
+              </ul>
+            </div>
+
+            <div class="card card-nav-tabs col-md-4">
+              <div class="card-header card-header-success">
+                Pickup Address
+              </div>
+
+              <br>
+              <div class="form-check form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="addr" id="sameP" value="sameP">
+                  Same Saved Address
+                  <span class="circle">
+                    <span class="check"></span>
+                  </span>
+                </label>
+              </div>
+              <div class="form-check form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="addr" id="askP" value="askP">
+                  Ask Everytime
+                  <span class="circle">
+                    <span class="check"></span>
+                  </span>
+                </label>
+              </div>
+
+            </div>
+
+            <div class="card card-nav-tabs col-md-4">
+              <div class="card-header card-header-info">
+                Return Address
+              </div>
+              <ul class="list-group list-group-flush">
+
+                <br>
+                <div class="form-check form-check-radio">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="returnA" id="sameR" value="sameR">
+                    Same Pickup Address
+                    <span class="circle">
+                      <span class="check"></span>
+                    </span>
+                  </label>
+                </div>
+                <div class="form-check form-check-radio">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="returnA" id="askR" value="askR">
+                    Ask Everytime
+                    <span class="circle">
+                      <span class="check"></span>
+                    </span>
+                  </label>
+                </div>
+
+              </ul>
+            </div>
+          </div>
+          <div class="row">
+            <div class="card card-nav-tabs col-md-4">
+              <div class="card-header card-header-warning">
+                Label Setting
+              </div>
+              <ul class="list-group list-group-flush">
+
+                <br>
+                <div class="form-check form-check-radio">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="label" id="old" value="old">
+                    Old Label
+                    <span class="circle">
+                      <span class="check"></span>
+                    </span>
+                  </label>
+                </div>
+                <div class="form-check form-check-radio">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="label" id="new" value="new">
+                    New Label
+                    <span class="circle">
+                      <span class="check"></span>
+                    </span>
+                  </label>
+                </div>
+
+
+              </ul>
+            </div>
+
+            <div class="card card-nav-tabs col-md-4">
+              <div class="card-header card-header-danger">
+                Notifications
+              </div>
+              <ul class="list-group list-group-flush">
+
+                <br>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox" value="yes" name="sendSMS">
+                    Send SMS to Buyer
+                    <span class="form-check-sign">
+                      <span class="check"></span>
+                    </span>
+                  </label>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox" value="yes" name="sendEmail">
+                    Send Email to Buyer
+                    <span class="form-check-sign">
+                      <span class="check"></span>
+                    </span>
+                  </label>
+                </div>
+
+              </ul>
+            </div>
+
+            <div class="card card-nav-tabs col-md-4">
+              <div class="card-header card-header-success">
+                Channel Integration
+              </div>
+              <ul class="list-group list-group-flush">
+
+                <br>
+                <div class="form-check form-check-radio">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="channel" id="enable" value="enable">
+                    Enable
+                    <span class="circle">
+                      <span class="check"></span>
+                    </span>
+                  </label>
+                </div>
+                <div class="form-check form-check-radio">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="channel" id="disable" value="disable">
+                    Disable
+                    <span class="circle">
+                      <span class="check"></span>
+                    </span>
+                  </label>
+                </div><br>
+
+              </ul>
+            </div>
+          </div>
+          <div class="row">
+
+            <button type="submit" class="btn btn-info btn-lg" id="save">Save Settings</button>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="../assets/js/core/jquery.min.js"></script>
+  <script src="../assets/js/core/popper.min.js"></script>
+  <script src="../assets/js/core/bootstrap-material-design.min.js"></script>
+  <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <script src="../assets/js/plugins/moment.min.js"></script>
+  <script src="../assets/js/plugins/sweetalert2.js"></script>
+  <script src="../assets/js/plugins/jquery.bootstrap-wizard.js"></script>
+  <script src="../assets/js/plugins/bootstrap-selectpicker.js"></script>
+  <script src="../assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
+  <script src="../assets/js/plugins/jquery.dataTables.min.js"></script>
+  <script src="../assets/js/plugins/bootstrap-tagsinput.js"></script>
+  <script src="../assets/js/plugins/jasny-bootstrap.min.js"></script>
+  <script src="../assets/js/plugins/fullcalendar.min.js"></script>
+  <script src="../assets/js/plugins/jquery-jvectormap.js"></script>
+  <script src="../assets/js/plugins/nouislider.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+  <script src="../assets/js/plugins/arrive.min.js"></script>
+  <script src="../assets/js/plugins/chartist.min.js"></script>
+  <script src="../assets/js/plugins/bootstrap-notify.js"></script>
+  <script src="../assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+  <script src="../../js/toast/toastr.min.js"></script>
+  <script type="text/javascript">
+
+
+    $(document).ready(function () {
+      $().ready(function () {
+
+        toastr.options = {
+          "closeButton": true,
+          "debug": false,
+          "newestOnTop": false,
+          "progressBar": false,
+          "positionClass": "toast-top-right",
+          "preventDuplicates": false,
+          "onclick": null,
+          "showDuration": "300",
+          "hideDuration": "1000",
+          "timeOut": "5000",
+          "extendedTimeOut": "1000",
+          "showEasing": "swing",
+          "hideEasing": "linear",
+          "showMethod": "fadeIn",
+          "hideMethod": "fadeOut"
+        }
+
+        $("#save").click(function (e) {
+
+          e.preventDefault();
+
+          $.ajax({
+
+            url: "script.php",
+            type: "post",
+            data: $("#setting").serialize(),
+            success: function (d) {
+
+              if (d == 'success') {
+
+                toastr["success"]("Settings Saved", "Saved");
+
+
+              } if (d == 'error') {
+
+                toastr["error"]("Something Not right. Try again Later.", "Error");
+
+              }
+            }
+
+          });
+
+        });
+
+
+        $sidebar = $('.sidebar');
+
+        $sidebar_img_container = $sidebar.find('.sidebar-background');
+
+        $full_page = $('.full-page');
+
+        $sidebar_responsive = $('body > .navbar-collapse');
+
+        window_width = $(window).width();
+
+        fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
+
+        if (window_width > 767 && fixed_plugin_open == 'Dashboard') {
+          if ($('.fixed-plugin .dropdown').hasClass('show-dropdown')) {
+            $('.fixed-plugin .dropdown').addClass('open');
+          }
+
+        }
+
+        $('.fixed-plugin a').click(function (event) {
+
+          if ($(this).hasClass('switch-trigger')) {
+            if (event.stopPropagation) {
+              event.stopPropagation();
+            } else if (window.event) {
+              window.event.cancelBubble = true;
+            }
+          }
+        });
+
+        $('.fixed-plugin .active-color span').click(function () {
+          $full_page_background = $('.full-page-background');
+
+          $(this).siblings().removeClass('active');
+          $(this).addClass('active');
+
+          var new_color = $(this).data('color');
+
+          if ($sidebar.length != 0) {
+            $sidebar.attr('data-color', new_color);
+          }
+
+          if ($full_page.length != 0) {
+            $full_page.attr('filter-color', new_color);
+          }
+
+          if ($sidebar_responsive.length != 0) {
+            $sidebar_responsive.attr('data-color', new_color);
+          }
+        });
+
+        $('.fixed-plugin .background-color .badge').click(function () {
+          $(this).siblings().removeClass('active');
+          $(this).addClass('active');
+
+          var new_color = $(this).data('background-color');
+
+          if ($sidebar.length != 0) {
+            $sidebar.attr('data-background-color', new_color);
+          }
+        });
+
+        $('.fixed-plugin .img-holder').click(function () {
+          $full_page_background = $('.full-page-background');
+
+          $(this).parent('li').siblings().removeClass('active');
+          $(this).parent('li').addClass('active');
+
+
+          var new_image = $(this).find("img").attr('src');
+
+          if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
+            $sidebar_img_container.fadeOut('fast', function () {
+              $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
+              $sidebar_img_container.fadeIn('fast');
+            });
+          }
+
+          if ($full_page_background.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
+            var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+
+            $full_page_background.fadeOut('fast', function () {
+              $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
+              $full_page_background.fadeIn('fast');
+            });
+          }
+
+          if ($('.switch-sidebar-image input:checked').length == 0) {
+            var new_image = $('.fixed-plugin li.active .img-holder').find("img").attr('src');
+            var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+
+            $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
+            $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
+          }
+
+          if ($sidebar_responsive.length != 0) {
+            $sidebar_responsive.css('background-image', 'url("' + new_image + '")');
+          }
+        });
+
+        $('.switch-sidebar-image input').change(function () {
+          $full_page_background = $('.full-page-background');
+
+          $input = $(this);
+
+          if ($input.is(':checked')) {
+            if ($sidebar_img_container.length != 0) {
+              $sidebar_img_container.fadeIn('fast');
+              $sidebar.attr('data-image', '#');
+            }
+
+            if ($full_page_background.length != 0) {
+              $full_page_background.fadeIn('fast');
+              $full_page.attr('data-image', '#');
+            }
+
+            background_image = true;
+          } else {
+            if ($sidebar_img_container.length != 0) {
+              $sidebar.removeAttr('data-image');
+              $sidebar_img_container.fadeOut('fast');
+            }
+
+            if ($full_page_background.length != 0) {
+              $full_page.removeAttr('data-image', '#');
+              $full_page_background.fadeOut('fast');
+            }
+
+            background_image = false;
+          }
+        });
+
+        $('.switch-sidebar-mini input').change(function () {
+          $body = $('body');
+
+          $input = $(this);
+
+          if (md.misc.sidebar_mini_active == true) {
+            $('body').removeClass('sidebar-mini');
+            md.misc.sidebar_mini_active = false;
+
+            $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
+
+          } else {
+
+            $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar('destroy');
+
+            setTimeout(function () {
+              $('body').addClass('sidebar-mini');
+
+              md.misc.sidebar_mini_active = true;
+            }, 300);
+          }
+
+          var simulateWindowResize = setInterval(function () {
+            window.dispatchEvent(new Event('resize'));
+          }, 180);
+
+          setTimeout(function () {
+            clearInterval(simulateWindowResize);
+          }, 1000);
+
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Courier Here | Shipping Solution</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <link href="https://drive.google.com/uc?export=view&id=1MDR88nZg-9aStDLTYPT9925TO3ws7Yam" rel="icon">
+  <link href="https://drive.google.com/uc?export=view&id=1Cbt73GyRP5y48lDkEO-fvx-zcbxtbF07" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700"
+    rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/lib/animate/animate.min.css" rel="stylesheet">
+  <link href="/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+  <link href="/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/toast/toastr.min.css">
+
+  <!-- Main Stylesheet File -->
+  <link href="/css/style.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+  <!--==========================
+  Header
+  ============================-->
+
+  <div id="loading"></div>
+  <header id="header" class="fixed-top">
+    <div class="container">
+
+      <div class="logo float-left">
+        <a href="#intro" class="scrollto"><img
+            src="https://drive.google.com/uc?export=view&id=1z3t23o3DtapUSPjMBuMle9Mzen0fg3bp" alt=""
+            class="img-fluid"></a>
+      </div>
+
+      <nav class="main-nav float-right d-none d-lg-block">
+        <ul>
+          <li class="active"><a href="#intro">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+          <li>
+            <a id="loginSignUpLink" href='http://localhost:3000/dashboard'>Dashboard</a>
+          </li>
+        </ul>
+      </nav><!-- .main-nav -->
+
+    </div>
+  </header><!-- #header -->
+
+  <!--==========================
+    Intro Section
+  ============================-->
+  <section id="intro" class="clearfix">
+    <div class="container">
+
+      <div class="intro-img">
+        <img src="https://drive.google.com/uc?export=view&id=1bllLR1WPhtKi-PUGaSaPtTfdmXC_r1c0" alt=""
+          class="img-fluid">
+      </div>
+
+      <div class="intro-info">
+        <h2>We provide shipping<br><span>solutions</span><br>for personal courier.</h2>
+        <div class="container">
+          <form name="searchForm" method="post" id="searchForm">
+            <div class="row">
+              <div class="col form-group">
+                <lable class="input-lable">From </lable>
+                <input class="form-control form-control-sm" type="text" id="sourcePin" name="sourcePin"
+                  placeholder="Pickup Pin" aria-label=".form-control-lg example">
+              </div>
+              <div class="col form-group">
+                <lable class="input-lable"> To </lable>
+                <input class="form-control form-control-sm" type="text" name="destinationPin" id="destinationPin"
+                  placeholder="Destination Pin" aria-label=".form-control-lg example">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col ">
+                <button type="button" class="btn btn-primary btn-md" id="pinCheck">Check Availability</button>
+
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </section><!-- #intro -->
+
+  <main id="main">
+
+    <!--==========================
+      About Us Section
+    ============================-->
+    <section id="about">
+      <div class="container">
+
+        <header class="section-header">
+          <h3>About Us</h3>
+          <p>No #1 eCommerce shipping solution, trusted by over 30,000 brands and entrepreneurs for lowest shipping
+            rates, widest reach and best customer service.</p>
+        </header>
+
+        <div class="row about-container">
+
+          <div class="col-lg-6 content order-lg-1 order-2">
+            <p>
+              Our vision is to build up proceeding with brightness in conveyance capacities concentrated on the
+              individual client. In
+              quest for feasible authority in quality administrations, we have advanced a framework interesting in the
+              nation today:
+            </p>
+
+            <div class="icon-box wow fadeInUp" data-wow-delay="0.2s">
+              <div class="icon"><i class="fa fa-photo"></i></div>
+              <h4 class="title"><a href="">Courier Here for Own Shop/ Marketplace seller</a></h4>
+              <p class="description">Integrations with multiple carts and marketplaces, notifications for buyers via SMS
+                & Emails, CORE, multiple pickup locations and widest reach.</p>
+            </div>
+
+            <div class="icon-box wow fadeInUp" data-wow-delay="0.4s">
+              <div class="icon"><i class="fa fa-bar-chart"></i></div>
+              <h4 class="title"><a href="">Courier Here for Personal Shipment</a></h4>
+              <p class="description">NDR/Exception order management tool, Reduced RTO rates, advanced analytics and
+                reporting, Solutions and unified support.</p>
+            </div>
+
+          </div>
+
+          <div class="col-lg-6 background order-lg-2 order-1 wow fadeInUp">
+            <img src="https://drive.google.com/uc?export=view&id=1dfcbQoGyQk176yqLrHRO7oIdeYfeUnxy" class="img-fluid"
+              alt="">
+          </div>
+        </div>
+
+      </div>
+    </section><!-- #about -->
+
+    <!--==========================
+      Services Section
+    ============================-->
+    <section id="services" class="section-bg">
+      <div class="container">
+
+        <header class="section-header">
+          <h3>Services</h3>
+          <p>Courier Here platform provides many services regarding shipping. Some of them are-</p>
+        </header>
+
+        <div class="row">
+
+          <div class="col-md-6 col-lg-5 offset-lg-1 wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+            <div class="box">
+              <div class="icon"><i class="ion-ios-paper-outline" style="color: #3fcdc7;"></i></div>
+              <h4 class="title"><a href="">Personal Courier</a></h4>
+              <p class="description">Users can also sends their personal courier with us according to the servicable pin
+                codes of integrated courier.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-5 offset-lg-1 wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+            <div class="box">
+              <div class="icon"><i class="ion-ios-paper-outline" style="color: #3fcdc7;"></i></div>
+              <h4 class="title"><a href="">International Courier</a></h4>
+              <p class="description">Users can also sends their personal courier with us according to the servicable pin
+                codes to any where in the world.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- #services -->
+
+    <!--==========================
+      Why Us Section
+    ============================-->
+    <section id="why-us" class="wow fadeIn">
+      <div class="container">
+        <header class="section-header">
+          <h3>Why choose us?</h3>
+          <p>We provides the cheapest courier and logistics services and 24*7 Customer Support for resolving issue.</p>
+        </header>
+
+        <div class="row row-eq-height justify-content-center">
+
+          <div class="col-lg-4 mb-4">
+            <div class="card wow bounceInUp">
+              <i class="fa fa-diamond"></i>
+              <div class="card-body">
+                <h5 class="card-title">Send Your Personal Courier Anywhere</h5>
+                <ul class="card-text">
+                  <li>Reduce shipping Cos.</li>
+                  <li>Maximum Insurance for lost shipments.</li>
+                  <li>Lower return costs as compared to forward charges</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 mb-4">
+            <div class="card wow bounceInUp">
+              <i class="fa fa-language"></i>
+              <div class="card-body">
+                <h5 class="card-title">Improve shipping quality</h5>
+                <ul class="card-text">l <li>Reap the benefits of Courier Recommendation Engine</li>
+                  <li>Reduce undelivery with NDR and RTO dashboards</li>
+                  <li>Process bulk orders in a few clicks</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 mb-4">
+            <div class="card wow bounceInUp">
+              <i class="fa fa-object-group"></i>
+              <div class="card-body">
+                <h5 class="card-title">Superior Experience for Customers</h5>
+                <ul class="card-text">
+                  <li>Effective order tracking via SMS and Email notifications</li>
+                  <li>White labeled shipment tracking page</li>
+                  <li>Easy pickup for return order requests</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!--==========================
+      Clients Section
+    ============================-->
+    <section id="testimonials" class="section-bg">
+      <div class="container">
+
+        <header class="section-header">
+          <h3>Customer Reviews</h3>
+        </header>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+
+            <div class="owl-carousel testimonials-carousel wow fadeInUp">
+
+              <div class="testimonial-item">
+                <img src="https://drive.google.com/uc?export=view&id=11cCTmr6d9kECohp7PSohYWclglR866jd"
+                  class="testimonial-img" alt="">
+                <h3>Ashwani Singh</h3>
+                <p>
+                  I Used to deliver medicines to my customers with Courier Here. It was a great experience for me to use
+                  this platform to deliver products to customer.
+                </p>
+              </div>
+
+              <div class="testimonial-item">
+                <img src="https://drive.google.com/uc?export=view&id=11cCTmr6d9kECohp7PSohYWclglR866jd"
+                  class="testimonial-img" alt="">
+                <h3>Mahesh Yadav</h3>
+                <p>
+                  I was new in online selling and ECommerce. I used to selfship my product to my customers. So with the
+                  help of Courier Here platform it becomes so easy for me to ship that with automatic channel
+                  integration.
+                </p>
+              </div>
+
+              <div class="testimonial-item">
+                <img src="https://drive.google.com/uc?export=view&id=11cCTmr6d9kECohp7PSohYWclglR866jd"
+                  class="testimonial-img" alt="">
+                <h3>Amrita Pandey</h3>
+                <p>
+                  I used to ship my manufactured toys to the customer who buys from my website. I integrated and it
+                  shows automatically for orders. Although a great experience.
+                </p>
+              </div>
+
+              <div class="testimonial-item">
+                <img src="https://drive.google.com/uc?export=view&id=11cCTmr6d9kECohp7PSohYWclglR866jd"
+                  class="testimonial-img" alt="">
+                <h3>Shivam Vishwakarma</h3>
+                <p>
+                  I used to send sometimes my personal parcel to some places in M.P., Mumbai and Gujarat. And it cost me
+                  50% cheaper than regular courier. It also provide pickup service directly from my home.
+                </p>
+              </div>
+
+              <div class="testimonial-item">
+                <img src="https://drive.google.com/uc?export=view&id=11cCTmr6d9kECohp7PSohYWclglR866jd"
+                  class="testimonial-img" alt="">
+                <h3>Varsha Jaiswal</h3>
+                <p>I use to ship the electronics items. Once mt packet is lost by courier so Courier Here provides me
+                  full amount worth the produce and also a comensation for that. A great service. </p>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+
+      </div>
+    </section><!-- #testimonials -->
+
+    <!--==========================
+      Team Section
+    ============================-->
+    <section id="team">
+      <div class="container">
+        <div class="section-header">
+          <h3>Team</h3>
+          <p>We have a team, Worked together to Develop the Website <br><strong> COURIER HERE. </strong></p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 wow fadeInUp">
+            <div class="member">
+              <img src="https://drive.google.com/uc?export=view&id=1cBgQAZh5-OFyEg1jJa_uHcWfl3LJO6RL" class="img-fluid"
+                alt="Yash">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Yash Vishwakarma</h4>
+                  <span>Back End</span>
+                  <div class="social">
+                    <a href=""><i class="fa fa-twitter"></i></a>
+                    <a href=""><i class="fa fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/yash_vish87" class="instagram"><i
+                        class="fa fa-instagram"></i></a>
+                    <a href=""><i class="fa fa-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="member">
+              <img src="https://drive.google.com/uc?export=view&id=1cBgQAZh5-OFyEg1jJa_uHcWfl3LJO6RL" class="img-fluid"
+                alt="Amit">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Amit Yadav</h4>
+                  <span>Front End</span>
+                  <div class="social">
+                    <a href=""><i class="fa fa-twitter"></i></a>
+                    <a href=""><i class="fa fa-facebook"></i></a>
+                    <a href="" class="instagram"><i class="fa fa-instagram"></i></a>
+                    <a href=""><i class="fa fa-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+            <div class="member">
+              <img src="https://drive.google.com/uc?export=view&id=1cBgQAZh5-OFyEg1jJa_uHcWfl3LJO6RL" class="img-fluid"
+                alt="Shubham">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Shubham Kumar</h4>
+                  <span>Database Management</span>
+                  <div class="social">
+                    <a href=""><i class="fa fa-twitter"></i></a>
+                    <a href=""><i class="fa fa-facebook"></i></a>
+                    <a href="" class="instagram"><i class="fa fa-instagram"></i></a>
+                    <a href=""><i class="fa fa-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+            <div class="member">
+              <img src="https://drive.google.com/uc?export=view&id=1cBgQAZh5-OFyEg1jJa_uHcWfl3LJO6RL" class="img-fluid"
+                alt="Aniket">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Aniket Pandey</h4>
+                  <span>Scripting</span>
+                  <div class="social">
+                    <a href=""><i class="fa fa-twitter"></i></a>
+                    <a href=""><i class="fa fa-facebook"></i></a>
+                    <a href="" class="instagram"><i class="fa fa-instagram"></i></a>
+                    <a href=""><i class="fa fa-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- #team -->
+
+
+    <!--==========================
+      Contact Section
+    ============================-->
+    <section id="contact">
+      <div class="container-fluid">
+
+        <div class="section-header">
+          <h3>Contact Us</h3>
+        </div>
+
+        <div class="row wow fadeInUp">
+
+          <div class="col-lg-6">
+            <div class="map mb-4 mb-lg-0">
+
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1235.4799856350214!2d83.08243744786378!3d25.642747648902063!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3991db28d611f8f3%3A0xad5ca80945d6bcac!2sCourier%20Here!5e0!3m2!1sen!2sin!4v1583641458349!5m2!1sen!2sin"
+                width="600" height="450" frameborder="0" style="border:0; width: 100%; height: 350px;"
+                allowfullscreen=""></iframe>
+
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="row">
+              <div class="col-md-4 info">
+                <i class="ion-ios-location-outline"></i>
+                <p>Shop No 14, Jagdishnagar chauraha, Maudha - 233221</p>
+              </div>
+              <div class="col-md-4 info">
+                <i class="ion-ios-email-outline"></i>
+                <p>support@courierhere.com</p>
+              </div>
+              <div class="col-md-4 info">
+                <i class="ion-ios-telephone-outline"></i>
+                <p>+91 87566 46123</p>
+              </div>
+            </div>
+
+            <div class="form">
+              <div id="sendmessage">Your message has been sent. Thank you!</div>
+              <div id="errormessage"></div>
+              <form method="post" role="form" id="ContactForm" name="ContactForm" class="contactForm">
+                <div class="form-row">
+                  <div class="form-group col-lg-6">
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name">
+                    <div class="validation"></div>
+                  </div>
+                  <div class="form-group col-lg-6">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email">
+                    <div class="validation"></div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject">
+                  <div class="validation"></div>
+                </div>
+                <div class="form-group">
+                  <textarea class="form-control" name="message" id="message" rows="5" data-rule="required"></textarea>
+                  <div class="validation"></div>
+                </div>
+                <div class="text-center"><button type="submit" id="SendMsg" title="Send Message">Send Message</button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- #contact -->
+
+  </main>
+
+  <!--==========================
+    Footer
+  ============================-->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-4 col-md-6 footer-info">
+            <h3>Courier Here</h3>
+            <p>Courier Here is the cross platform in which helps the Retails and Wholesellers to send their products
+              directly to customer with the least cost. Courier Here also provide to Ship your Personaal Courier just
+              from home by providing a free Pickup Service directly from your doorsteps.</p>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">About us</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Terms of service</a></li>
+              <li><a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h4>Contact Us</h4>
+            <p>
+              Shop No 14 <br>
+              Jagdishnagar Chauraha, Maudha - 233221 <br>
+              INDIA <br>
+              <strong>Phone:</strong> +91 1234567890<br>
+              <strong>Email:</strong> courierhere@gmail.com<br>
+            </p>
+
+            <div class="social-links">
+              <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+              <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+              <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+              <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+            </div>
+
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-newsletter">
+            <h4>Our Newsletter</h4>
+            <p>Get Subscribe to Us and get Notified to all the offers and Integration released directly to you E-mail,
+              and also recieves updates on the newsletter of our Platform <strong> Courier Here</strong></p>
+            <for id="SubscribeForm" name="subscribeName">
+              <input type="email" id="SubsInp" name="SubsEmail"><input type="submit" id="SubsBtn" value="Subscribe">
+              </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong>Courier Here</strong>. All Rights Reserved
+      </div>
+    </div>
+  </footer><!-- #footer -->
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+  <script src="/js/manage.js"></script>
+  <script src="/lib/jquery/jquery.min.js"></script>
+  <script src="/lib/jquery/jquery-migrate.min.js"></script>
+  <script src="/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/lib/easing/easing.min.js"></script>
+  <script src="/lib/mobile-nav/mobile-nav.js"></script>
+  <script src="/lib/wow/wow.min.js"></script>
+  <script src="/lib/waypoints/waypoints.min.js"></script>
+  <script src="/lib/counterup/counterup.min.js"></script>
+  <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="/lib/isotope/isotope.pkgd.min.js"></script>
+  <script src="/lib/lightbox/js/lightbox.min.js"></script>
+
+
+  <script src="/js/toast/toastr.min.js"></script>
+  <script src="/dashboard/assets/js/plugins/sweetalert2.js"></script>
+  <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+
+
+  <!-- Template Main Javascript File -->
+  <script src="/js/main.js"></script>
+
+  <script type="text/javascript">
+
+    window.addEventListener("load", function () {
+      $.get("http://localhost:3000/checkCookie", (data, status) => {
+
+        if (data.status == 0) {
+          $("#loginSignUpLink").attr("href", "http://localhost:3000/loginPage").text("Login/Signup");
+        } else {
+          var token = document.cookie
+          $("#loginSignUpLink").attr("href", "http://localhost:3000/dashboard?" + token).text("Go to Dashboard");
+        }
+      });
+      $("#loading").css("display", "none");
+    });
+
+
+
+    $("#pinCheck").click(function (p) {
+      toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-top-center",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+      }
+      p.preventDefault();
+      $("#searchForm").validate({
+        rules: {
+          sourcePin: {
+            required: true,
+            maxlength: 6,
+            minlength: 6,
+            number: true
+          },
+          destinationPin: {
+            required: true,
+            maxlength: 6,
+            minlength: 6,
+            number: true
+          }
+        },
+        messages: {
+          sourcePin: {
+            required: "Please Enter Pin",
+            maxlength: "Invalid pin",
+            minlength: "Invalid pin",
+            number: "Invalid type/Enter number only"
+          },
+
+          destinationPin: {
+            required: "Please Enter Pin",
+            maxlength: "Invalid pin",
+            minlength: "Invalid pin",
+            number: "Invalid type/Enter number only"
+          }
+        }
+      });
+
+      var settings = {
+        url: "http://localhost:3000/checkServicability",
+        "method": "GET",
+        "timeout": 0,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        data: {
+          "pickup": $('#sourcePin').val(),
+          "delivery": $('#destinationPin').val()
+        },
+      };
+      $.ajax(settings).done(function (response) {
+        if (response.message === "Serviceable Zone") {
+          toastr["success"]("Your route is Serviceable. Book Your Order", "Serviceable");
+        } else {
+          toastr["error"](response.message, "");
+        }
+      });
+
+
+    });
+
+    $("form[name='ContactForm']").validate({
+
+      rules: {
+        email: {
+          required: true,
+          email: true
+        },
+        subject: {
+          required: true,
+
+        },
+        name: {
+          required: true
+        },
+        message: {
+          required: true,
+          minlength: 12
+        }
+      },
+      messages: {
+
+        name: {
+          required: "Please provide Full Name"
+        },
+        message: {
+          required: "Please provide message to Us",
+          minlength: "Please provide at least 4 words"
+        },
+        subject: {
+          required: "Please define a subject "
+
+        },
+        email: "Please enter a valid email address"
+      },
+      submitHandler: function (form) {
+
+        $.ajax({
+
+          url: "script/script.php",
+          type: "post",
+          data: $("#ContactForm").serialize(),
+          success: function (d) {
+
+            if (d == 'false') {
+
+              $("#ContactForm")[0].reset();
+              $("#name, #email, #subject, #message, #Sendmsg").each(function () {
+                $(this).prop('disabled', true);
+              });
+              toastr.options = {
+
+                "closeButton": true,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": false,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+              }
+
+              toastr["success"]("Thank you for writting us. We will get back to you soon.", "Recieved");
+
+
+            } if (d == 'true') {
+
+              toastr["error"]("Something Went wrong. Please try again later. ", "Error");
+
+            }
+
+          }
+
+        });
+
+      }
+    });
+  </script>
+
+</body>
+
+</html>

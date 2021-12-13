@@ -9,12 +9,11 @@ const auth = async (req, res, next) => {
         if (!user) {
             throw new Error()
         }
-
         req.token = token
         req.user = user
         next()
     } catch (e) {
-        res.send({ error: 'Please authenticate.' })
+        res.redirect("http://localhost:3000/loginPage?error=Please+Login")
     }
 }
 

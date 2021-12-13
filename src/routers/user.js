@@ -8,31 +8,20 @@ router.post('/users', async (req, res) => {
     try {
         await user.save()
         const token = await user.generateAuthToken()
-        res.status(201).send({ user, token })
+        res.cookie('APP_ID', token)
+        res.send({ status: 1 })
     } catch (e) {
-        res.send(e)
+        res.send("0")
     }
 })
 
-router.post('/login', auth, async (req, res) => {
+router.post('/login', async (req, res) => {
+    console.log(req.body)
     try {
         const user = await User.findByCredentials(req.body.email, req.body.password)
         const token = await user.generateAuthToken()
-
-        res.send({ user, token })
-    } catch (e) {
-        res.send(e)
-    }
-})
-
-router.post('/logout', auth, async (req, res) => {
-    try {
-        req.user.tokens = req.body.tokens.filter((token) => {
-            return token.token !== req.token
-        })
-        await req.user.save()
-
-        res.send({ message: "Logged Out" })
+        res.cookie('APP_ID', token)
+        res.send({ status: 1 })
     } catch (e) {
         res.send(e)
     }
@@ -41,10 +30,11 @@ router.post('/logout', auth, async (req, res) => {
 router.post('/logoutAll', auth, async (req, res) => {
     try {
         req.user.tokens = []
+        res.clearCookie("APP_ID")
         await req.user.save()
-        res.send({ message: "Logged Out" })
+        res.send({ status: 1 })
     } catch (e) {
-        res.send(e)
+        res.send("0")
     }
 })
 

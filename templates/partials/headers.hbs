@@ -1,0 +1,68 @@
+<div class="sidebar" data-color="azure" data-background-color="white" data-image="/assets/img/sidebar-1.jpg">
+    <div class="logo"><a href="#" class="simple-text logo-normal" id="nameUser">
+            {{name}}</a></div>
+    <div class="sidebar-wrapper">
+        <ul class="nav">
+            <li class="nav-item" id="dashboard">
+                <a class="nav-link" href="http://localhost:3000/dashboard">
+                    <i class="material-icons">dashboard</i>
+                    <p>Dashboard</p>
+                </a>
+            </li>
+            <li class="nav-item" id="userProfile">
+                <a class="nav-link" href="http://localhost:3000/dashboard/profile">
+                    <i class="material-icons">person</i>
+                    <p>User Profile</p>
+                </a>
+            </li>
+            <li class="nav-item" id="wallet">
+                <a class="nav-link" href="http://localhost:3000/dashboard/wallet">
+                    <i class="material-icons">attach_money</i>
+                    <p>Wallet</p>
+                </a>
+            </li>
+            <li class="nav-item " id="address">
+                <a class="nav-link" href="http://localhost:3000/dashboard/address">
+                    <i class="material-icons">pin_drop</i>
+                    <p>Address</p>
+                </a>
+            </li>
+            <li class="nav-item " id="setting">
+                <a class="nav-link" href="http://localhost:3000/dashboard/settings">
+                    <i class="material-icons">settings</i>
+                    <p>Setting</p>
+                </a>
+            </li>
+            <li class="nav-item " id="order">
+                <a class="nav-link" href="http://localhost:3000/dashboard/orders">
+                    <i class="material-icons">ballot</i>
+                    <p>Order</p>
+                </a>
+            </li>
+            <li class="nav-item " id="createOrder">
+                <a class="nav-link" href="http://localhost:3000/dashboard/create_order">
+                    <i class="material-icons">ballot</i>
+                    <p>Create Order</p>
+                </a>
+            </li>
+            <li class="nav-item " id="rateCalculate">
+                <a class="nav-link" href="http://localhost:3000/dashboard/rate">
+                    <i class="material-icons">web_asset</i>
+                    <p>Rate Calculate</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+    const varToString = varObj => Object.keys(varObj)[0]
+    function myFunction() {
+        const displayName = varToString({ {{ id }}: 1 })
+    var element = document.getElementById(displayName);
+    console.log(element)
+    element.classList.add('active');
+    }
+    myFunction()
+</script>

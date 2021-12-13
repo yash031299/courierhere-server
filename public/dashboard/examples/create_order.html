@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="../../img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="../../img/favicon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>
+        Create Order | Courier Here
+    </title>
+    <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+    <link rel="stylesheet" type="text/css"
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <link href="../assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
+    <link rel="stylesheet" href="../../css/toast/toastr.min.css">
+</head>
+
+<body class="">
+    <div class="wrapper ">
+        <div class="sidebar" data-color="azure" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
+            <div class="logo"><a href="" class="simple-text logo-normal">
+
+                </a></div>
+            <div class="sidebar-wrapper">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./dashboard.html">
+                            <i class="material-icons">dashboard</i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./usersP.html">
+                            <i class="material-icons">person</i>
+                            <p>User Profile</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./wallet.html">
+                            <i class="material-icons">attach_money</i>
+                            <p>Wallet</p>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="./address.php">
+                            <i class="material-icons">pin_drop</i>
+                            <p>Address</p>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="./settings.html">
+                            <i class="material-icons">settings</i>
+                            <p>Setting</p>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="./orders.html">
+                            <i class="material-icons">ballot</i>
+                            <p>Order</p>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="./orders.html">
+                            <i class="material-icons">ballot</i>
+                            <p>Create Order</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./rate.html">
+                            <i class="material-icons">web_asset</i>
+                            <p>Rate Calculate</p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item ">
+                        <a class="nav-link" href="./servicable.html">
+                            <i class="material-icons">map</i>
+                            <p>Servicable Area</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="main-panel">
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+                <div class="container-fluid">
+                    <div class="navbar-wrapper">
+                        <a class="navbar-brand" href="javascript:;"><strong>Create Order</strong></a>
+                    </div>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="navbar-toggler-icon icon-bar"></span>
+                        <span class="navbar-toggler-icon icon-bar"></span>
+                        <span class="navbar-toggler-icon icon-bar"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end">
+                        <form class="navbar-form">
+                            <div class="input-group no-border">
+                            </div>
+                        </form>
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="javascript:;" id="navbarDropdownProfile"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="material-icons">person</i>
+                                    <p class="d-lg-none d-md-block">
+                                        Account
+                                    </p>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
+                                    <a class="dropdown-item" href="../../index.html">Go to Homepage</a>
+                                    <a class="dropdown-item" href="./usersP.html">Profile</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="../../pages/signup.html">Log out</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- End Navbar -->
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header card-header-info">
+                                    <h4 class="card-title">Create Order</h4>
+                                    <p class="card-category">Fill All The Required Details</p>
+                                </div>
+                                <div class="card-body">
+                                    <form method="post" id="service" name="service">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="bmd-label-floating">Pick Up Pin Code</label>
+                                                    <input type="text" class="form-control" name="pickupPin"
+                                                        id="pickupPin">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="bmd-label-floating">Destination Pin Code</label>
+                                                    <input type="text" class="form-control" name="destinationPin"
+                                                        id="destinationPin">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <button type="submit" class="btn btn-info m-3" id="checkService"> Check
+                                                    Service
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+
+                                        </div>
+
+                                    </form>
+                                    <form method="post" id="customer" name="profile">
+                                        <div class="container-fluid">
+                                            <label class="bmd-label-floating"><b>Billing
+                                                    Customer</b><br /><br /></label>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">First Name</label>
+                                                        <input type="text" class="form-control" name="Fname" id="Fname"
+                                                            disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Last Name</label>
+                                                        <input type="text" class="form-control" name="Lname" id="Lname"
+                                                            disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Email</label>
+                                                        <input type="email" class="form-control" name="email" id="email"
+                                                            disabled>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Adress</label>
+                                                        <input type="text" class="form-control" name="address"
+                                                            id="address" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">City</label>
+                                                        <input type="text" class="form-control" name="city" id="city"
+                                                            disabled>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Country</label>
+                                                        <input type="text" class="form-control" name="country"
+                                                            id="country" value="INDIA" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Pin Code</label>
+                                                        <input type="text" class="form-control" id="code" name="code"
+                                                            disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Mobile No</label>
+                                                        <input type="text" class="form-control" id="mobile"
+                                                            name="mobile" disabled>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="container-fluid">
+                                            <label class="bmd-label-floating"><br /><b>Package
+                                                    Details</b><br /><br /></label>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Package Name</label>
+                                                        <input type="text" class="form-control" name="packageName"
+                                                            id="packageName" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">SKU(Package Code)</label>
+                                                        <input type="text" class="form-control" name="sku" id="sku"
+                                                            disabled>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Units</label>
+                                                        <input type="text" class="form-control" name="units" id="units"
+                                                            disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Selling Price</label>
+                                                        <input type="text" class="form-control" name="sellingPrice"
+                                                            id="sellingPrice" disabled>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Length</label>
+                                                        <input type="text" class="form-control" name="length"
+                                                            id="length" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Breath</label>
+                                                        <input type="text" class="form-control" name="breath"
+                                                            id="breath" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Height</label>
+                                                        <input type="text" class="form-control" name="height"
+                                                            id="height" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Weight</label>
+                                                        <input type="text" class="form-control" name="weight"
+                                                            id="weight" disabled>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="container-fluid">
+                                            <label class="bmd-label-floating"><br /><b>Vendor
+                                                    Customer</b><br /><br /></label>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">First Name</label>
+                                                        <input type="text" class="form-control" name="VFname"
+                                                            id="VFname" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Last Name</label>
+                                                        <input type="text" class="form-control" name="VLname"
+                                                            id="VLname" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Email</label>
+                                                        <input type="email" class="form-control" name="Vemail"
+                                                            id="Vemail" disabled>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Adress</label>
+                                                        <input type="text" class="form-control" name="Vaddress"
+                                                            id="Vaddress" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">City</label>
+                                                        <input type="text" class="form-control" name="Vcity" id="Vcity"
+                                                            disabled>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Country</label>
+                                                        <input type="text" class="form-control" name="Vcountry"
+                                                            id="Vcountry" value="INDIA" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Pin Code</label>
+                                                        <input type="text" class="form-control" id="Vcode" name="Vcode"
+                                                            disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Mobile No</label>
+                                                        <input type="text" class="form-control" id="Vmobile"
+                                                            name="Vmobile" disabled>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <button type="submit" class="btn btn-info m-3" id="createOrder"
+                                                    disabled>Create
+                                                    Order</button>
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="../assets/js/core/jquery.min.js"></script>
+    <script src="../assets/js/core/popper.min.js"></script>
+    <script src="../assets/js/core/bootstrap-material-design.min.js"></script>
+    <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <script src="../assets/js/plugins/moment.min.js"></script>
+    <script src="../assets/js/plugins/sweetalert2.js"></script>
+    <script src="../assets/js/plugins/jquery.bootstrap-wizard.js"></script>
+    <script src="../assets/js/plugins/bootstrap-selectpicker.js"></script>
+    <script src="../assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
+    <script src="../assets/js/plugins/jquery.dataTables.min.js"></script>
+    <script src="../assets/js/plugins/bootstrap-tagsinput.js"></script>
+    <script src="../assets/js/plugins/jasny-bootstrap.min.js"></script>
+    <script src="../assets/js/plugins/fullcalendar.min.js"></script>
+    <script src="../assets/js/plugins/jquery-jvectormap.js"></script>
+    <script src="../assets/js/plugins/nouislider.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+    <script src="../assets/js/plugins/arrive.min.js"></script>
+    <script src="../assets/js/plugins/chartist.min.js"></script>
+    <script src="../assets/js/plugins/bootstrap-notify.js"></script>
+    <script src="../assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+    <script src="../../js/toast/toastr.min.js"></script>
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+            $().ready(function () {
+
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+                $("#checkService").click(function (p) {
+                    $("#service").validate({
+                        rules: {
+                            pickupPin: {
+                                required: true,
+                                number: true,
+                                maxlength: 6,
+                                minlength: 6
+                            },
+                            destinationPin: {
+                                required: true,
+                                number: true,
+                                maxlength: 6,
+                                minlength: 6
+                            }
+                        },
+                        messages: {
+                            pickupPin: {
+                                required: "Please enter pickup pin",
+                                number: "Invalid format",
+                                maxlength: "Invalid pin",
+                                minlength: "Invalid pin"
+                            },
+                            destinationPin: {
+                                required: "Please enter deliver pin",
+                                number: "Invalid format",
+                                maxlength: "Invalid pin",
+                                minlength: "Invalid pin"
+                            }
+                        }
+                    });
+                    p.preventDefault();
+                    var vld = $(this).valid();
+                    console.log(vld);
+                    if (vld == true) {
+                        $(".form-control").removeAttr('disabled');
+                    }
+                });
+                $("#createOrder").click(function () {
+
+                    $("#customer").validate({
+
+                        rules: {
+                            Fname: {
+                                required: true
+                            },
+                            Lname: {
+                                required: true
+                            },
+                            email: {
+                                required: true,
+                                email: true
+                            },
+                            address: {
+                                required: true
+                            },
+                            city: {
+                                required: true
+                            },
+                            country: {
+                                required: true
+                            },
+                            code: {
+                                required: true,
+                                number: true,
+                                maxlength: 6,
+                                minlength: 6
+                            },
+                            mobile: {
+                                required: true,
+                                number: true,
+                                maxlength: 10,
+                                minlength: 10
+                            },
+                            packageName: {
+                                required: true
+                            },
+                            sku: {
+                                required: true,
+                                number: true
+                            },
+                            units: {
+                                required: true,
+                                number: true
+                            },
+                            sellingPrice: {
+                                required: true,
+                                number: true
+                            },
+                            length: {
+                                required: true,
+                                number: true
+                            },
+                            breath: {
+                                required: true,
+                                number: true
+                            },
+                            height: {
+                                required: true,
+                                number: true
+                            },
+                            weight: {
+                                required: true,
+                                number: true
+                            },
+                            VFname: {
+                                required: true
+                            },
+                            VLname: {
+                                required: true
+                            },
+                            Vemail: {
+                                required: true,
+                                email: true
+                            },
+                            Vaddress: {
+                                required: true
+                            },
+                            Vcity: {
+                                required: true
+                            },
+                            Vcountry: {
+                                required: true
+                            },
+                            Vcode: {
+                                required: true,
+                                number: true,
+                                maxlength: 6,
+                                minlength: 6
+                            },
+                            Vmobile: {
+                                required: true,
+                                number: true,
+                                maxlength: 10,
+                                minlength: 10
+                            }
+                        },
+                        messages: {
+                            Fname: {
+                                required: "Please provide First Name"
+                            },
+                            Lname: {
+                                required: "Please provide Last Name"
+                            },
+                            email: {
+                                required: "Please enter a valid email address",
+                                email: "Please provide valid Email"
+                            },
+                            address: {
+                                required: "Please Enter a complete address"
+                            },
+                            city: {
+                                required: "Please provide your city"
+                            },
+                            country: {
+                                required: "Please provide your Country Name"
+                            },
+                            code: {
+                                required: "Please provide your Postal Code",
+                                number: "Enter numbers only",
+                                maxlength: "Invaid Pin Code",
+
+                                minlength: "Invaid Pin Code"
+                            },
+                            mobile: {
+                                required: "Please provide mobile number",
+                                number: "Enter numbers only",
+                                maxlength: "Invalid Mobile Number",
+                                maxlength: "Invalid Mobile Number"
+                            },
+                            packageName: {
+                                required: "Enter package name"
+                            },
+                            sku: {
+                                required: "Enter package id",
+                                number: "Enter numbers only"
+                            },
+                            units: {
+                                required: "Enter units",
+                                number: "Enter numbers only"
+                            },
+                            sellingPrice: {
+                                required: "Enter valid price",
+                                number: "Enter numbers only"
+                            },
+                            VFname: {
+                                required: "Please provide First Name"
+                            },
+                            VLname: {
+                                required: "Please provide Last Name"
+                            },
+                            Vemail: {
+                                required: "Please enter a valid email address",
+                                email: "Please provide valid Email"
+                            },
+                            Vaddress: {
+                                required: "Please Enter a complete address"
+                            },
+                            Vcity: {
+                                required: "Please provide your city"
+                            },
+                            Vcountry: {
+                                required: "Please provide your Country Name"
+                            },
+                            Vcode: {
+                                required: "Please provide your Postal Code",
+                                number: "Enter numbers only",
+                                maxlength: "Invaid Pin Code",
+                                minlength: "Invaid Pin Code"
+                            },
+                            Vmobile: {
+                                required: "Please provide mobile number",
+                                number: "Enter numbers only",
+                                maxlength: "Invalid Mobile Number",
+                                maxlength: "Invalid Mobile Number"
+                            }
+                        },
+                        submitHandler: function (form) {
+
+                            $.ajax({
+
+                                url: "script.php",
+                                type: "post",
+                                data: $("#customer").serialize(),
+                                success: function (d) {
+
+                                    if (d == 'success') {
+
+                                        toastr["success"]("Order Created.", "Saved");
+
+
+                                    } if (d == 'error') {
+
+                                        toastr["error"]("Something Not right. Try again Later.", "Error");
+
+                                    } if (d == 'Cerror') {
+
+                                        toastr["error"]("Something Not right. Try again Later.", "Error");
+                                    }
+                                }
+
+                            });
+
+                        }
+
+                    });
+
+
+                });
+
+                $('#code').keyup(function () {
+
+                    this.value = this.value.replace(/[^0-9\.]/g, '');
+
+                });
+
+                $sidebar = $('.sidebar');
+
+                $sidebar_img_container = $sidebar.find('.sidebar-background');
+
+                $full_page = $('.full-page');
+
+                $sidebar_responsive = $('body > .navbar-collapse');
+
+                window_width = $(window).width();
+
+                fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
+
+                if (window_width > 767 && fixed_plugin_open == 'Dashboard') {
+                    if ($('.fixed-plugin .dropdown').hasClass('show-dropdown')) {
+                        $('.fixed-plugin .dropdown').addClass('open');
+                    }
+
+                }
+
+                $('.fixed-plugin a').click(function (event) {
+
+                    if ($(this).hasClass('switch-trigger')) {
+                        if (event.stopPropagation) {
+                            event.stopPropagation();
+                        } else if (window.event) {
+                            window.event.cancelBubble = true;
+                        }
+                    }
+                });
+
+                $('.fixed-plugin .active-color span').click(function () {
+                    $full_page_background = $('.full-page-background');
+
+                    $(this).siblings().removeClass('active');
+                    $(this).addClass('active');
+
+                    var new_color = $(this).data('color');
+
+                    if ($sidebar.length != 0) {
+                        $sidebar.attr('data-color', new_color);
+                    }
+
+                    if ($full_page.length != 0) {
+                        $full_page.attr('filter-color', new_color);
+                    }
+
+                    if ($sidebar_responsive.length != 0) {
+                        $sidebar_responsive.attr('data-color', new_color);
+                    }
+                });
+
+                $('.fixed-plugin .background-color .badge').click(function () {
+                    $(this).siblings().removeClass('active');
+                    $(this).addClass('active');
+
+                    var new_color = $(this).data('background-color');
+
+                    if ($sidebar.length != 0) {
+                        $sidebar.attr('data-background-color', new_color);
+                    }
+                });
+
+                $('.fixed-plugin .img-holder').click(function () {
+                    $full_page_background = $('.full-page-background');
+
+                    $(this).parent('li').siblings().removeClass('active');
+                    $(this).parent('li').addClass('active');
+
+
+                    var new_image = $(this).find("img").attr('src');
+
+                    if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
+                        $sidebar_img_container.fadeOut('fast', function () {
+                            $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
+                            $sidebar_img_container.fadeIn('fast');
+                        });
+                    }
+
+                    if ($full_page_background.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
+                        var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+
+                        $full_page_background.fadeOut('fast', function () {
+                            $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
+                            $full_page_background.fadeIn('fast');
+                        });
+                    }
+
+                    if ($('.switch-sidebar-image input:checked').length == 0) {
+                        var new_image = $('.fixed-plugin li.active .img-holder').find("img").attr('src');
+                        var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+
+                        $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
+                        $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
+                    }
+
+                    if ($sidebar_responsive.length != 0) {
+                        $sidebar_responsive.css('background-image', 'url("' + new_image + '")');
+                    }
+                });
+
+                $('.switch-sidebar-image input').change(function () {
+                    $full_page_background = $('.full-page-background');
+
+                    $input = $(this);
+
+                    if ($input.is(':checked')) {
+                        if ($sidebar_img_container.length != 0) {
+                            $sidebar_img_container.fadeIn('fast');
+                            $sidebar.attr('data-image', '#');
+                        }
+
+                        if ($full_page_background.length != 0) {
+                            $full_page_background.fadeIn('fast');
+                            $full_page.attr('data-image', '#');
+                        }
+
+                        background_image = true;
+                    } else {
+                        if ($sidebar_img_container.length != 0) {
+                            $sidebar.removeAttr('data-image');
+                            $sidebar_img_container.fadeOut('fast');
+                        }
+
+                        if ($full_page_background.length != 0) {
+                            $full_page.removeAttr('data-image', '#');
+                            $full_page_background.fadeOut('fast');
+                        }
+
+                        background_image = false;
+                    }
+                });
+
+                $('.switch-sidebar-mini input').change(function () {
+                    $body = $('body');
+
+                    $input = $(this);
+
+                    if (md.misc.sidebar_mini_active == true) {
+                        $('body').removeClass('sidebar-mini');
+                        md.misc.sidebar_mini_active = false;
+
+                        $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
+
+                    } else {
+
+                        $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar('destroy');
+
+                        setTimeout(function () {
+                            $('body').addClass('sidebar-mini');
+
+                            md.misc.sidebar_mini_active = true;
+                        }, 300);
+                    }
+
+                    var simulateWindowResize = setInterval(function () {
+                        window.dispatchEvent(new Event('resize'));
+                    }, 180);
+
+                    setTimeout(function () {
+                        clearInterval(simulateWindowResize);
+                    }, 1000);
+
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

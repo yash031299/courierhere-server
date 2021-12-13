@@ -1,0 +1,402 @@
+<?php
+        
+    if(array_key_exists("companyName", $_POST)){
+            
+            include "connection.php";
+            
+            $id = $_COOKIE['LoggedUser'];
+            
+            $companyName = $_POST['companyName'];
+            $companyType = $_POST['companyType'];
+            $Fname = $_POST['Fname'];
+            $email = mysqli_real_escape_string($link, $_POST['email']);
+            $address = mysqli_real_escape_string($link, $_POST['address']);
+            $city = $_POST['city'];
+            $country = $_POST['country'];
+            $code = $_POST['code'];
+            
+            $query = "INSERT INTO `profile` (`id`, `company name`, `company type`, `full name`, `email`, `address`, `city`, `country`, `code`) VALUES ('$id', '$companyName', '$companyType', '$Fname', '$email', '$address', '$city', '$country', '$code')";
+        
+            $query2 = "SELECT * FROM profile WHERE id = '".$id."'";
+        
+            $query3 = "UPDATE `profile` SET `company name` = '$companyName', `company type` = '$companyType', `full name` = '$Fname', `email` = '$email', `address` = '$address', `city` = '$city', `country` = '$country', `code` = '$code' WHERE `id` = ".$id;
+        
+            $query4 = "UPDATE `users` SET `name` = '$Fname', `email` = '$email', `company name` = '$companyName'  WHERE `id` = ".$id;
+            
+            if($res = mysqli_query($link, $query2)){
+                
+                if(mysqli_num_rows($res) > 0){
+                    
+                   if(mysqli_query($link, $query3) && mysqli_query($link, $query4)){
+                       
+                       echo 'success';
+                       
+                   }else{
+                       
+                       echo 'Cerror';
+                   }
+                    
+                }else{
+                    
+                    if(mysqli_query($link, $query) && mysqli_query($link, $query4)){
+                        
+                        echo 'success';
+                        
+                    }else{
+                        
+                        echo 'Cerror';
+                        
+                    }
+                    
+                }    
+                
+            }else{
+                
+                echo 'error';
+                
+            }
+            
+            
+        }
+
+        if(array_key_exists("Cpassword", $_POST)){
+            
+            include "connection.php";
+            
+             $pass = password_hash($_POST['Cpassword'], PASSWORD_DEFAULT);
+            
+            $query = "UPDATE `users` SET `password` = '".$pass."' WHERE id = ".$_COOKIE['LoggedUser'];
+            
+            if(mysqli_query($link, $query)){
+                
+                echo 'success';
+                
+            }else{
+                
+                echo 'error';
+            }
+            
+            
+        }
+
+        if(array_key_exists("shopNo", $_POST)){
+            
+            include "connection.php";
+            
+            $id = $_COOKIE['LoggedUser'];
+            
+            $shopNo = $_POST['shopNo'];
+            $streetNo = $_POST['streetNo'];
+            $area = $_POST['area'];
+            $landmark = $_POST['landmark'];
+            $state = $_POST['state'];
+            $country = $_POST['country'];
+            $code = $_POST['code'];
+            
+            $query = "INSERT INTO `pickup` (`id`, `shop no`, `street no`, `area`, `landmark`, `state`, `country`, `code`) VALUES ('$id', '$shopNo', '$streetNo', '$area', '$landmark', '$state', '$country', '$code')";
+            
+            $checkQ = "SELECT * FROM `pickup` WHERE `id` = '".$id."'";
+            
+            
+            $query3 = "UPDATE `pickup` SET `shop no` = '$shopNo', `street no` = '$streetNo', `area` = '$area', `landmark` = '$landmark', `state` = '$state', `country` = '$country', `code` = '$code' WHERE `id` = ".$id;
+            
+            $re = mysqli_query($link, $checkQ);
+            if(mysqli_num_rows($re) > 0){
+                
+                if(mysqli_query($link, $query3)){
+                    
+                    echo 'success';
+                    
+                }else{
+                    
+                    echo 'error';
+                    
+                }
+                
+                }else{
+                
+                    if(mysqli_query($link, $query)){
+
+                        echo 'success';
+                        
+                    }else{
+
+                        echo 'error';
+                        
+                    }
+                }
+            }
+
+            if(array_key_exists("returnA", $_POST)){
+                
+                include "connection.php";
+                
+                $id = $_COOKIE['LoggedUser'];
+                
+                $courier = mysqli_real_escape_string($link, $_POST['courier']);
+                $pickup = mysqli_real_escape_string($link,$_POST['addr']);
+                $returnA = mysqli_real_escape_string($link,$_POST['returnA']);
+                $label = mysqli_real_escape_string($link,$_POST['label']);
+                $channel = mysqli_real_escape_string($link,$_POST['channel']);
+                
+                if(array_key_exists("sendSMS", $_POST)){
+                    
+                    $sendSMS = $_POST['sendSMS'];
+                    
+                }else{
+                    
+                    $sendSMS = "no";
+                    
+                }
+                
+                if(array_key_exists("sendEmail", $_POST)){
+                    
+                    $sendEmail = $_POST['sendEmail'];
+                    
+                }else{
+                    
+                    $sendEmail = "no";
+                    
+                }
+                 
+                
+                $query = "INSERT INTO `setting` (`id`, `courier`, `pickup`, `returnA`, `label`, `sendsms`, `sendemail`, `channel`) VALUES ('$id', '$courier', '$pickup', '$returnA', '$label', '$sendSMS', '$sendEmail', '$channel')";
+            
+                $checkQ = "SELECT * FROM `setting` WHERE `id` = ".$id;
+
+
+                $query3 = "UPDATE `setting` SET `courier`= '$courier',`pickup` ='$pickup',`returnA` ='$returnA',`label` ='$label',`sendsms` ='$sendSMS',`sendemail` ='$sendEmail',`channel` ='$channel' WHERE id = ".$id;
+                
+                $re = mysqli_query($link, $checkQ);
+                    
+                if(mysqli_num_rows($re) > 0){
+                        
+                    if(mysqli_query($link, $query3)){
+                        
+                        echo 'success';
+                        
+                    }else{
+                        
+                        echo 'error';
+                    }
+                        
+                }else{
+                        
+                    if(mysqli_query($link, $query)){
+                        
+                        echo 'success';
+                        
+                    }else{
+                        
+                        echo 'error';
+                        
+                    }
+                }           
+               
+            }
+
+            if(array_key_exists("FlipkartUsername", $_POST)){
+                
+                include "connection.php";
+                $id = $_COOKIE['LoggedUser'];
+                $username = $_POST['FlipkartUsername'];
+                $password = password_hash($_POST['FlipkartPassword'], PASSWORD_DEFAULT);
+                
+                $query = "INSERT INTO `flipkart` (`id`, `username`, `password`) VALUES ('$id', '$username', '$password');";
+                
+                $query1 = "SELECT * FROM flipkart WHERE id = ".$_COOKIE['LoggedUser'];
+                
+                $res = mysqli_query($link, $query1);
+                
+                if(mysqli_num_rows($res) > 0){
+                    
+                    echo 'already';
+                    
+                }else{
+                   
+                   if(mysqli_query($link, $query)){
+                       
+                       echo 'success';
+                       
+                   }else{
+                       
+                       echo 'error';
+                       
+                   }
+                    
+                }
+                
+                
+            }
+
+            if(array_key_exists("AmazonUsername", $_POST)){
+                
+                include "connection.php";
+                $id = $_COOKIE['LoggedUser'];
+                $username = $_POST['AmazonUsername'];
+                $password = password_hash($_POST['AmazonPassword'], PASSWORD_DEFAULT);
+                
+                $query = "INSERT INTO `amazon` (`id`, `username`, `password`) VALUES ('$id', '$username', '$password');";
+                
+                $query1 = "SELECT * FROM amazon WHERE id = ".$_COOKIE['LoggedUser'];
+                
+                $res = mysqli_query($link, $query1);
+                
+                if(mysqli_num_rows($res) > 0){
+                    
+                    echo 'already';
+                    
+                }else{
+                   
+                   if(mysqli_query($link, $query)){
+                       
+                       echo 'success';
+                       
+                   }else{
+                       
+                       echo 'error';
+                       
+                   }
+                    
+                }
+                
+                
+            }
+
+            if(array_key_exists("ShopcluesUsername", $_POST)){
+                
+                include "connection.php";
+                $id = $_COOKIE['LoggedUser'];
+                $username = $_POST['ShopcluesUsername'];
+                $password = password_hash($_POST['ShopcluesPassword'], PASSWORD_DEFAULT);
+                
+                $query = "INSERT INTO `shopclues` (`id`, `username`, `password`) VALUES ('$id', '$username', '$password');";
+                
+                $query1 = "SELECT * FROM shopclues WHERE id = ".$_COOKIE['LoggedUser'];
+                
+                $res = mysqli_query($link, $query1);
+                
+                if(mysqli_num_rows($res) > 0){
+                    
+                    echo 'already';
+                    
+                }else{
+                   
+                   if(mysqli_query($link, $query)){
+                       
+                       echo 'success';
+                       
+                   }else{
+                       
+                       echo 'error';
+                       
+                   }
+                    
+                }
+                
+                
+            }
+
+            if(array_key_exists("2GUDUsername", $_POST)){
+                
+                include "connection.php";
+                $id = $_COOKIE['LoggedUser'];
+                $username = $_POST['2GUDUsername'];
+                $password = password_hash($_POST['2GUDPassword'], PASSWORD_DEFAULT);
+                
+                $query = "INSERT INTO `2gud` (`id`, `username`, `password`) VALUES ('$id', '$username', '$password');";
+                
+                $query1 = "SELECT * FROM 2gud WHERE id = ".$_COOKIE['LoggedUser'];
+                
+                $res = mysqli_query($link, $query1);
+                
+                if(mysqli_num_rows($res) > 0){
+                    
+                    echo 'already';
+                    
+                }else{
+                   
+                   if(mysqli_query($link, $query)){
+                       
+                       echo 'success';
+                       
+                   }else{
+                       
+                       echo 'error';
+                       
+                   }
+                    
+                }
+                
+                
+            }
+
+            if(array_key_exists("SnapdealUsername", $_POST)){
+                
+                include "connection.php";
+                $id = $_COOKIE['LoggedUser'];
+                $username = $_POST['SnapdealUsername'];
+                $password = password_hash($_POST['SnapdealPassword'], PASSWORD_DEFAULT);
+                
+                $query = "INSERT INTO `snapdeal` (`id`, `username`, `password`) VALUES ('$id', '$username', '$password');";
+                
+                $query1 = "SELECT * FROM snapdeal WHERE id = ".$_COOKIE['LoggedUser'];
+                
+                $res = mysqli_query($link, $query1);
+                
+                if(mysqli_num_rows($res) > 0){
+                    
+                    echo 'already';
+                    
+                }else{
+                   
+                   if(mysqli_query($link, $query)){
+                       
+                       echo 'success';
+                       
+                   }else{
+                       
+                       echo 'error';
+                       
+                   }
+                    
+                }
+                
+                
+            }
+
+            if(array_key_exists("WooUsername", $_POST)){
+                
+                include "connection.php";
+                $id = $_COOKIE['LoggedUser'];
+                $username = $_POST['WooUsername'];
+                $password = password_hash($_POST['WooPassword'], PASSWORD_DEFAULT);
+                
+                $query = "INSERT INTO `woo` (`id`, `username`, `password`) VALUES ('$id', '$username', '$password');";
+                
+                $query1 = "SELECT * FROM woo WHERE id = ".$_COOKIE['LoggedUser'];
+                
+                $res = mysqli_query($link, $query1);
+                
+                if(mysqli_num_rows($res) > 0){
+                    
+                    echo 'already';
+                    
+                }else{
+                   
+                   if(mysqli_query($link, $query)){
+                       
+                       echo 'success';
+                       
+                   }else{
+                       
+                       echo 'error';
+                       
+                   }
+                    
+                }
+                
+                
+            }
+
+?>
