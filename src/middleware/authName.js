@@ -12,10 +12,10 @@ const auth = async (req, res, next) => {
             next()
         }
         else {
-            res.redirect("http://localhost:3000")
+            res.redirect("/loginPage")
         }
     } else {
-        res.redirect("http://localhost:3000")
+        res.redirect("/loginPage")
     }
 }
 

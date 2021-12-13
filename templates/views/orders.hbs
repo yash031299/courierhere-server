@@ -20,81 +20,8 @@
                         <div class="card-header card-header-info" style="font-size:20px;margin-bottom: 2.5rem;;">
                             Your Orders
                         </div>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="card card-stats">
-                                    <div class="card-header card-header-success">
-                                        <h5 class="card-title" style="text-align: left;">Order ID: 123654789</h5>
-                                    </div>
-                                    <div class="card-footer">
-                                        <a href="#" class="btn-sm btn-primary"> Cancel</a>
-                                        <h6 class="card-title"><a href="#">AWB N0: 45698</a></h6>
+                        <div class="row" id="orderr">
 
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card card-stats">
-                                    <div class="card-header card-header-success">
-                                        <h5 class="card-title" style="text-align: left;">Order ID: 123654789</h5>
-                                    </div>
-                                    <div class="card-footer">
-                                        <a href="#" class="btn-sm btn-primary"> Cancel</a>
-                                        <h6 class="card-title"><a href="#">AWB N0: 45698</a></h6>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card card-stats">
-                                    <div class="card-header card-header-success">
-                                        <h5 class="card-title" style="text-align: left;">Order ID: 123654789</h5>
-                                    </div>
-                                    <div class="card-footer">
-                                        <a href="#" class="btn-sm btn-primary"> Cancel</a>
-                                        <h6 class="card-title"><a href="#">AWB N0: 45698</a></h6>
-
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="col-md-4">
-                                <div class="card card-stats">
-                                    <div class="card-header card-header-success">
-                                        <h5 class="card-title" style="text-align: left;">Order ID: 123654789</h5>
-                                    </div>
-                                    <div class="card-footer">
-                                        <a href="#" class="btn-sm btn-primary"> Cancel</a>
-                                        <h6 class="card-title"><a href="#">AWB N0: 45698</a></h6>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card card-stats">
-                                    <div class="card-header card-header-success">
-                                        <h5 class="card-title" style="text-align: left;">Order ID: 123654789</h5>
-                                    </div>
-                                    <div class="card-footer">
-                                        <a href="#" class="btn-sm btn-primary"> Cancel</a>
-                                        <h6 class="card-title"><a href="#">AWB N0: 45698</a></h6>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card card-stats">
-                                    <div class="card-header card-header-success">
-                                        <h5 class="card-title" style="text-align: left;">Order ID: 123654789</h5>
-                                    </div>
-                                    <div class="card-footer">
-                                        <a href="#" class="btn-sm btn-primary"> Cancel</a>
-                                        <h6 class="card-title"><a href="#">AWB N0: 45698</a></h6>
-
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -104,7 +31,87 @@
         {{>headerJS}}
         <script>
             $(document).ready(function () {
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "positionClass": "toast-top-center",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
                 $().ready(function () {
+                    var ca = document.cookie;
+                    var token = "Bearer " + ca.slice(7, ca.length);
+
+                    var settings = {
+                        url: "/getOrder",
+                        "method": "POST",
+                        "timeout": 0,
+                        "headers": {
+                            "Content-Type": "application/json",
+                            'Authorization': token
+                        }
+                    };
+                    $.ajax(settings).done(function (data) {
+                        console.log(data)
+                        let dt = data;
+                        for (let i = 0, j = data.length + 10; i < data.length; i++, j++) {
+                            $("#orderr").append(`<div class="col-md-4">
+                                    <div class="card card-stats">
+                                        <div class="card-header card-header-success">
+                                            <h5 class="card-title orderId" style="text-align: left;"id="`+ i + `">Order ID:</h5>
+                                        </div>
+                                    <div class="card-footer">
+                                        <button  class="btn-sm btn-primary cancel"> Cancel</button>
+                                        <h6 class="card-title">AWB N0: <a href="#" target="__blank" class="awbNo"id="` + j + `"> </a></h6>
+
+                                    </div>
+                                </div>
+                                </div>`);
+                        }
+                        let j = data.length + 10;
+                        let i = 0;
+                        $.each(data, function (key, value) {
+                            $('#' + i).append(value.orderId);
+                            $('#' + j).append(value.details.awb_code);
+                            $("#" + j).attr("href", "https://shiprocket.co/tracking/" + value.details.awb_code)
+                            i++;
+                            j++;
+                        });
+
+                    });
+
+                    $(".cancel").click((p) => {
+                        p.preventDefault()
+                        toastr.options = {
+                            "closeButton": true,
+                            "debug": false,
+                            "newestOnTop": false,
+                            "progressBar": false,
+                            "positionClass": "toast-top-center",
+                            "preventDuplicates": false,
+                            "onclick": null,
+                            "showDuration": "300",
+                            "hideDuration": "1000",
+                            "timeOut": "5000",
+                            "extendedTimeOut": "1000",
+                            "showEasing": "swing",
+                            "hideEasing": "linear",
+                            "showMethod": "fadeIn",
+                            "hideMethod": "fadeOut"
+                        }
+                        toastr["warning"]("Your request have been recieved", "Order wil be canceled");
+                    });
+
                     $sidebar = $('.sidebar');
 
                     $sidebar_img_container = $sidebar.find('.sidebar-background');

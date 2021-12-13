@@ -29,13 +29,13 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <label class="bmd-label-floating">Full Name</label>
-                          <input type="text" class="form-control" name="Fname" id="Fname">
+                          <input type="text" class="form-control" name="Fname" id="Fname" value="{{name}}">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label class="bmd-label-floating">Email</label>
-                          <input type="email" class="form-control" name="email" id="email">
+                          <input type="email" class="form-control" name="email" id="email" value="{{email}}">
                         </div>
                       </div>
                     </div>
@@ -43,27 +43,27 @@
                       <div class="col-md-8">
                         <div class="form-group">
                           <label class="bmd-label-floating">Adress</label>
-                          <input type="text" class="form-control" name="address" id="address">
+                          <input type="text" class="form-control" name="address" id="address" value="{{address}}">
                         </div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group">
                           <label class="bmd-label-floating">City</label>
-                          <input type="text" class="form-control" name="city" id="city">
+                          <input type="text" class="form-control" name="city" id="city" value="{{city}}">
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-md-4">
                         <div class="form-group">
-                          <label class="bmd-label-floating">Country</label>
-                          <input type="text" class="form-control" name="country" id="country" value="INDIA" disabled>
+                          <label class="bmd-label-floating">Mobile No</label>
+                          <input type="text" class="form-control" name="mobile" id="mobile" value="{{mobile}}" disabled>
                         </div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group">
                           <label class="bmd-label-floating">Postal Code</label>
-                          <input type="text" class="form-control" id="code" name="code">
+                          <input type="text" class="form-control" id="code" name="code" value="{{pincode}}">
                         </div>
                       </div>
                       <div class="col-md-4">
@@ -105,6 +105,8 @@
 
 
     $(document).ready(function () {
+      var ca = document.cookie;
+      var token = "Bearer " + ca.slice(7, ca.length);
       $().ready(function () {
 
         toastr.options = {
@@ -149,7 +151,7 @@
               city: {
                 required: true
               },
-              country: {
+              mobile: {
                 required: true
               },
               code: {
@@ -159,13 +161,6 @@
               }
             },
             messages: {
-
-              companyName: {
-                required: "Please provide Company Type"
-              },
-              companyType: {
-                required: "Please Provide Company Type"
-              },
               Fname: {
                 required: "Please provide Full Name"
               },
@@ -179,8 +174,8 @@
               city: {
                 required: "Please provide your country"
               },
-              country: {
-                required: "Please provide your Country Name"
+              mobile: {
+                required: "Please provide your Mobile Number"
               },
               code: {
                 required: "Please provide your Postal Code",
@@ -189,29 +184,30 @@
               }
             },
             submitHandler: function (form) {
-
-              $.ajax({
-
-                url: "script.php",
-                type: "post",
-                data: $("#profile").serialize(),
-                success: function (d) {
-
-                  if (d == 'success') {
-
-                    toastr["success"]("We have saved your Details.", "Saved");
-
-
-                  } if (d == 'error') {
-
-                    toastr["error"]("Something Not right. Try again Later.", "Error");
-
-                  } if (d == 'Cerror') {
-
-                    toastr["error"]("Something Not right. Try again Later.", "Error");
-                  }
+              var settings = {
+                url: "/updateProfile",
+                "method": "POST",
+                "timeout": 0,
+                "headers": {
+                  "Content-Type": "application/json",
+                  'Authorization': token
+                },
+                data: JSON.stringify({
+                  "name": $('#Fname').val(),
+                  "email": $('#email').val(),
+                  "mobile": $('#mobile').val(),
+                  "address": $("#address").val(),
+                  "mobile": $('#mobile').val(),
+                  "pincode": $('#code').val(),
+                  "city": $('#city').val()
+                }),
+              };
+              $.ajax(settings).done(function (response) {
+                if (response.status == 1) {
+                  toastr["success"]("Your details have been saved successfully", "Updated");
+                } else {
+                  toastr["error"]("Something went wrong. Try again later", "Error");
                 }
-
               });
 
             }

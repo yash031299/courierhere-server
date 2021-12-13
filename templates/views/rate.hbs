@@ -26,28 +26,36 @@
                                 <div class="card-body">
                                     <form method="post" id="service" name="service">
                                         <div class="row">
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Pick Up Pin Code</label>
                                                     <input type="text" class="form-control" name="pickupPin"
                                                         id="pickupPin">
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Destination Pin Code</label>
                                                     <input type="text" class="form-control" name="destinationPin"
                                                         id="destinationPin">
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label class="bmd-label-floating">Weight</label>
+                                                    <input type="text" class="form-control" name="weight" id="weight">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
                                                 <button type="submit" class="btn btn-info m-3" id="checkService">
                                                     Calculate
                                                 </button>
                                             </div>
                                         </div>
-                                        <div class="row">
+                                        <div class="container-fluid">
+                                            <div class="card-header" id="courier">
 
+                                            </div>
                                         </div>
 
                                     </form>
@@ -64,9 +72,31 @@
         {{>headerJS}}
         <script>
             $(document).ready(function () {
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+                var ca = document.cookie;
+                var token = "Bearer " + ca.slice(7, ca.length);
                 $().ready(function () {
 
                     $("#checkService").click(function (p) {
+                        var container = $('#courier');
+                        container.html('Loading...')
+
                         $("#service").validate({
                             rules: {
                                 pickupPin: {
@@ -74,6 +104,10 @@
                                     number: true,
                                     maxlength: 6,
                                     minlength: 6
+                                },
+                                weight: {
+                                    required: true,
+                                    number: true
                                 },
                                 destinationPin: {
                                     required: true,
@@ -94,11 +128,47 @@
                                     number: "Invalid format",
                                     maxlength: "Invalid pin",
                                     minlength: "Invalid pin"
+                                },
+                                weight: {
+                                    required: "Please enter weight",
+                                    number: "Invalid format"
                                 }
                             }
                         });
                         p.preventDefault();
+                        var settings = {
+                            url: "/checkCouriers",
+                            "method": "POST",
+                            "timeout": 0,
+                            "headers": {
+                                "Content-Type": "application/json",
+                                'Authorization': token
+
+                            },
+                            data: JSON.stringify({
+                                "pickup": $('#pickupPin').val(),
+                                "delivery": $('#destinationPin').val(),
+                                "weight": $('#weight').val()
+                            })
+                        };
+                        $.ajax(settings).done(function (data) {
+                            var status = data.status
+                            if (status == 404) {
+                                container.html('');
+                                toastr["error"](data.message, "");
+
+                            } else {
+                                container.html('');
+                                for (var i = 0; i < data.length; i++) {
+                                    let courier_name = data[i].courier_name;
+                                    let courier_id = data[i].courier_id;
+                                    let rate = data[i].rate;
+                                    container.append(`<h5>` + courier_name + `&nbsp;&nbsp; &#8377; ` + rate + `</h5>`);
+                                }
+                            }
+                        });
                     });
+
 
 
                     $sidebar = $('.sidebar');

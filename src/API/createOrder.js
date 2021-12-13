@@ -89,9 +89,9 @@ const createOrder = (data, callback) => {
 
 router.post('/createOrder', auth, async (req, res) => {
 
-    if (req.user.wallet < 100)
-        return res.send({ error: "Please recharge your ShipRocket wallet. The minimum required balance is Rs 100" })
-
+    if (req.user.wallet < 100) {
+        return res.send({ status: 200, message: "Please Recharge Wallet to Create Order" })
+    }
     const d = createOrder(req.body, async (error, data) => {
         if (!error) {
             const { awb_code } = data
@@ -106,11 +106,13 @@ router.post('/createOrder', auth, async (req, res) => {
                     owner: req.user._id
                 })
                 await task.save()
+                return res.sned(data)
             }
-            return res.send(data)
+            return res.send({ status: 200, message: "Their is something wrong. Try again Later" })
         }
-        return res.send(error)
+        return res.send(error);
     });
+
 })
 
 module.exports = router

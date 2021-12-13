@@ -16,7 +16,7 @@ router.post('/order', auth, async (req, res) => {
     }
 })
 
-router.get('/order', auth, async (req, res) => {
+router.post('/getOrder', auth, async (req, res) => {
     try {
         await req.user.populate('Order').execPopulate()
         res.send(req.user.Order)

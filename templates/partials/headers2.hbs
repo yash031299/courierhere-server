@@ -42,7 +42,7 @@
         var token = "Bearer " + ca.slice(7, ca.length);
 
         var settings = {
-            url: "http://localhost:3000/logoutAll",
+            url: "/logoutAll",
             "method": "POST",
             "timeout": 0,
             "headers": {
@@ -52,7 +52,7 @@
         };
         $.ajax(settings).done(function (response) {
             if (response.status == "1") {
-                window.location.href = "http://localhost:3000";
+                window.location.href = "/";
             } else {
                 toastr["error"]("Server Error..", "Message");
             }

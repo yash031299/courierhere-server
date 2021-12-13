@@ -13,7 +13,7 @@ const auth = async (req, res, next) => {
         req.user = user
         next()
     } catch (e) {
-        res.redirect("http://localhost:3000/loginPage?error=Please+Login")
+        res.redirect("/loginPage")
     }
 }
 

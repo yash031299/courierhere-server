@@ -26,13 +26,11 @@ const checkPinCodeServicable = ({ pickup, delivery, weight }, callback) => {
         const d = JSON.parse(response.body)
         const { status, message, data } = d;
         if (status == 404)
-            callback(undefined, message)
+            callback(undefined, d)
         else if (status == 200) {
             let d = []
-            let t = {}
             const avaliableCourier = data.available_courier_companies;
             avaliableCourier.forEach(element => {
-
                 d.push({
                     courier_id: element.courier_company_id,
                     courier_name: element.courier_name,
@@ -46,12 +44,12 @@ const checkPinCodeServicable = ({ pickup, delivery, weight }, callback) => {
     });
 }
 
-router.post('/checkCouriers', auth, (req, res) => {
+router.post('/checkCouriers', (req, res) => {
     const d = checkPinCodeServicable(req.body, (error, data) => {
         if (!error) {
             return res.send(data)
         }
-        return res.send(error)
+        return res.send({ error, status: 0 })
     });
 })
 

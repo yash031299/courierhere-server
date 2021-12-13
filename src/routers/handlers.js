@@ -32,60 +32,162 @@ router.get('/signupPage', cookie, (req, res) => {
 
 router.get('/dashboard', authName, (req, res) => {
     var name = req.user.name
+    var email = req.user.email
+    var mobile = req.user.mobile
+    var wallet = req.user.wallet
+    var address = req.user.address
+    var city = req.user.city
+    var pincode = req.user.pincode
     res.render('dashboard', {
         id: "dashboard",
-        name: name
+        name: name,
+        email: email,
+        mobile: mobile,
+        wallet: wallet,
+        address: address,
+        city: city,
+        pincode: pincode
+
     })
 })
 
 router.get('/dashboard/profile', authName, (req, res) => {
-
+    var name = req.user.name
+    var email = req.user.email
+    var mobile = req.user.mobile
+    var wallet = req.user.wallet
+    var address = req.user.address
+    var city = req.user.city
+    var pincode = req.user.pincode
     res.render('usersP', {
-        id: "userProfile",
-        name: req.user.name
+        id: "dashboard",
+        name: name,
+        email: email,
+        mobile: mobile,
+        wallet: wallet,
+        address: address,
+        city: city,
+        pincode: pincode
     })
 })
 
 router.get('/dashboard/wallet', authName, (req, res) => {
+    var name = req.user.name
+    var email = req.user.email
+    var mobile = req.user.mobile
+    var wallet = req.user.wallet
+    var address = req.user.address
+    var city = req.user.city
+    var pincode = req.user.pincode
     res.render('wallet', {
-        id: "wallet",
-        name: req.user.name,
-        wallet: req.user.wallet
+        id: "dashboard",
+        name: name,
+        email: email,
+        mobile: mobile,
+        wallet: wallet,
+        address: address,
+        city: city,
+        pincode: pincode
     })
 })
 
 router.get('/dashboard/address', authName, (req, res) => {
+    var name = req.user.name
+    var email = req.user.email
+    var mobile = req.user.mobile
+    var wallet = req.user.wallet
+    var address = req.user.address
+    var city = req.user.city
+    var pincode = req.user.pincode
     res.render('address', {
-        id: "address",
-        name: req.user.name
+        id: "dashboard",
+        name: name,
+        email: email,
+        mobile: mobile,
+        wallet: wallet,
+        address: address,
+        city: city,
+        pincode: pincode
     })
 })
 
 router.get('/dashboard/settings', authName, (req, res) => {
+    var name = req.user.name
+    var email = req.user.email
+    var mobile = req.user.mobile
+    var wallet = req.user.wallet
+    var address = req.user.address
+    var city = req.user.city
+    var pincode = req.user.pincode
     res.render('settings', {
-        id: "setting",
-        name: req.user.name
+        id: "dashboard",
+        name: name,
+        email: email,
+        mobile: mobile,
+        wallet: wallet,
+        address: address,
+        city: city,
+        pincode: pincode
     })
 })
 
 router.get('/dashboard/orders', authName, (req, res) => {
+    var name = req.user.name
+    var email = req.user.email
+    var mobile = req.user.mobile
+    var wallet = req.user.wallet
+    var address = req.user.address
+    var city = req.user.city
+    var pincode = req.user.pincode
     res.render('orders', {
-        id: "order",
-        name: req.user.name
+        id: "dashboard",
+        name: name,
+        email: email,
+        mobile: mobile,
+        wallet: wallet,
+        address: address,
+        city: city,
+        pincode: pincode
     })
 })
 
 router.get('/dashboard/create_order', authName, (req, res) => {
+    var name = req.user.name
+    var email = req.user.email
+    var mobile = req.user.mobile
+    var wallet = req.user.wallet
+    var address = req.user.address
+    var city = req.user.city
+    var pincode = req.user.pincode
     res.render('create_order', {
-        id: "createOrder",
-        name: req.user.name
+        id: "dashboard",
+        name: name,
+        email: email,
+        mobile: mobile,
+        wallet: wallet,
+        address: address,
+        city: city,
+        pincode: pincode
     })
 })
 
 router.get('/dashboard/rate', authName, (req, res) => {
+    var name = req.user.name
+    var email = req.user.email
+    var mobile = req.user.mobile
+    var wallet = req.user.wallet
+    var address = req.user.address
+    var city = req.user.city
+    var pincode = req.user.pincode
     res.render('rate', {
-        id: "rateCalculate",
-        name: req.user.name
+        id: "dashboard",
+        name: name,
+        email: email,
+        mobile: mobile,
+        wallet: wallet,
+        address: address,
+        city: city,
+        pincode: pincode
     })
 })
 

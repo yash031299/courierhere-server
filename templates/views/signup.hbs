@@ -184,7 +184,7 @@
     $("#signupBtn").click(function (p) {
       p.preventDefault();
       var settings = {
-        url: "http://localhost:3000/users",
+        url: "/users",
         "method": "POST",
         "timeout": 0,
         "headers": {
@@ -201,7 +201,7 @@
         if (response.status == 1) {
           toastr["success"]("Redirecting to Dashboard...", "Signup Successful");
           token = document.cookie
-          window.setTimeout(window.location.href = ("http://localhost:3000/dashboard?" + token), 2000);
+          window.setTimeout(window.location.href = ("/dashboard?" + token), 2000);
         } else {
           toastr["error"]("Something went wrong. Try again later", "Error");
         }

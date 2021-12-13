@@ -26,30 +26,38 @@
                                 <div class="card-body">
                                     <form method="post" id="service" name="service">
                                         <div class="row">
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Pick Up Pin Code</label>
                                                     <input type="text" class="form-control" name="pickupPin"
                                                         id="pickupPin">
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Destination Pin Code</label>
                                                     <input type="text" class="form-control" name="destinationPin"
                                                         id="destinationPin">
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label class="bmd-label-floating">Weight</label>
+                                                    <input type="text" class="form-control" name="weight" id="weight">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
                                                 <button type="submit" class="btn btn-info m-3" id="checkService"> Check
                                                     Service
                                                 </button>
                                             </div>
                                         </div>
-                                        <div class="row">
+                                        <div class="container-fluid">
+                                            <div class="card-header" id="courier">
 
+                                            </div>
                                         </div>
-
+                                        <br>
                                     </form>
                                     <form method="post" id="customer" name="profile">
                                         <div class="container-fluid">
@@ -82,8 +90,8 @@
                                                 <div class="col-md-8">
                                                     <div class="form-group">
                                                         <label class="bmd-label-floating">Adress</label>
-                                                        <input type="text" class="form-control" name="address"
-                                                            id="address" disabled>
+                                                        <input type="text" class="form-control" name="Baddress"
+                                                            id="Baddress" disabled>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
@@ -97,9 +105,9 @@
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <div class="form-group">
-                                                        <label class="bmd-label-floating">Country</label>
-                                                        <input type="text" class="form-control" name="country"
-                                                            id="country" value="INDIA" disabled>
+                                                        <label class="bmd-label-floating">State</label>
+                                                        <input type="text" class="form-control" name="state" id="state"
+                                                            disabled>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
@@ -176,31 +184,18 @@
                                                             id="height" disabled>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <label class="bmd-label-floating">Weight</label>
-                                                        <input type="text" class="form-control" name="weight"
-                                                            id="weight" disabled>
-                                                    </div>
-                                                </div>
+
                                             </div>
                                         </div>
                                         <div class="container-fluid">
                                             <label class="bmd-label-floating"><br /><b>Vendor
                                                     Customer</b><br /><br /></label>
                                             <div class="row">
-                                                <div class="col-md-3">
+                                                <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label class="bmd-label-floating">First Name</label>
+                                                        <label class="bmd-label-floating">Full Name</label>
                                                         <input type="text" class="form-control" name="VFname"
                                                             id="VFname" disabled>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <label class="bmd-label-floating">Last Name</label>
-                                                        <input type="text" class="form-control" name="VLname"
-                                                            id="VLname" disabled>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -230,9 +225,9 @@
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <div class="form-group">
-                                                        <label class="bmd-label-floating">Country</label>
-                                                        <input type="text" class="form-control" name="Vcountry"
-                                                            id="Vcountry" value="INDIA" disabled>
+                                                        <label class="bmd-label-floating">State</label>
+                                                        <input type="text" class="form-control" name="Vstate"
+                                                            id="Vstate" disabled>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
@@ -253,7 +248,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <button type="submit" class="btn btn-info m-3" id="createOrder"
+                                                <button type="submit" class="btn btn-info m-3" id="createOrder1"
                                                     disabled>Create
                                                     Order</button>
                                             </div>
@@ -275,6 +270,8 @@
 
 
         $(document).ready(function () {
+            var ca = document.cookie;
+            var token = "Bearer " + ca.slice(7, ca.length);
             $().ready(function () {
 
                 toastr.options = {
@@ -294,7 +291,10 @@
                     "showMethod": "fadeIn",
                     "hideMethod": "fadeOut"
                 }
-                $("#checkService").click(function (p) {
+                $("#checkService").click((p) => {
+                    p.preventDefault();
+                    var container = $('#courier');
+                    container.html('Loading...');
                     $("#service").validate({
                         rules: {
                             pickupPin: {
@@ -308,6 +308,10 @@
                                 number: true,
                                 maxlength: 6,
                                 minlength: 6
+                            },
+                            weight: {
+                                required: true,
+                                number: true
                             }
                         },
                         messages: {
@@ -322,20 +326,50 @@
                                 number: "Invalid format",
                                 maxlength: "Invalid pin",
                                 minlength: "Invalid pin"
+                            },
+                            weight: {
+                                required: "Enter units",
+                                number: "Enter numbers only"
                             }
                         }
                     });
-                    p.preventDefault();
-                    var vld = $(this).valid();
-                    console.log(vld);
-                    if (vld == true) {
-                        $(".form-control").removeAttr('disabled');
-                    }
+
+                    var settings = {
+                        url: "/checkCouriers",
+                        "method": "POST",
+                        "timeout": 0,
+                        "headers": {
+                            "Content-Type": "application/json",
+                            'Authorization': token
+
+                        },
+                        data: JSON.stringify({
+                            "pickup": $('#pickupPin').val(),
+                            "delivery": $('#destinationPin').val(),
+                            "weight": $('#weight').val()
+                        })
+                    };
+                    $.ajax(settings).done(function (data) {
+                        var status = data.status
+                        if (status == 404) {
+                            container.html('');
+                            toastr["error"](data.message, "");
+
+                        } else {
+                            container.html('');
+                            for (var i = 0; i < data.length; i++) {
+                                let courier_name = data[i].courier_name;
+                                let courier_id = data[i].courier_id;
+                                let rate = data[i].rate;
+                                container.append(`<input class="form-check-input" type = "radio" name="courier_id"` + `value ="` + courier_id + `" required>` + `<label  class="form-check-label">` + courier_name + `&nbsp;&nbsp; &#8377; ` + rate + `</label><br/>`);
+                                $(".form-control").removeAttr('disabled');
+                            }
+                        }
+                    });
                 });
-                $("#createOrder").click(function () {
-
+                $("#createOrder1").click((p) => {
+                    alert($("#Vstate").val())
                     $("#customer").validate({
-
                         rules: {
                             Fname: {
                                 required: true
@@ -347,13 +381,13 @@
                                 required: true,
                                 email: true
                             },
-                            address: {
+                            Baddress: {
                                 required: true
                             },
                             city: {
                                 required: true
                             },
-                            country: {
+                            state: {
                                 required: true
                             },
                             code: {
@@ -395,14 +429,7 @@
                                 required: true,
                                 number: true
                             },
-                            weight: {
-                                required: true,
-                                number: true
-                            },
                             VFname: {
-                                required: true
-                            },
-                            VLname: {
                                 required: true
                             },
                             Vemail: {
@@ -415,7 +442,7 @@
                             Vcity: {
                                 required: true
                             },
-                            Vcountry: {
+                            Vstate: {
                                 required: true
                             },
                             Vcode: {
@@ -442,13 +469,13 @@
                                 required: "Please enter a valid email address",
                                 email: "Please provide valid Email"
                             },
-                            address: {
+                            Baddress: {
                                 required: "Please Enter a complete address"
                             },
                             city: {
                                 required: "Please provide your city"
                             },
-                            country: {
+                            state: {
                                 required: "Please provide your Country Name"
                             },
                             code: {
@@ -479,11 +506,20 @@
                                 required: "Enter valid price",
                                 number: "Enter numbers only"
                             },
+                            length: {
+                                required: "Enter valid price",
+                                number: "Enter numbers only"
+                            },
+                            breath: {
+                                required: "Enter valid price",
+                                number: "Enter numbers only"
+                            },
+                            height: {
+                                required: "Enter valid price",
+                                number: "Enter numbers only"
+                            },
                             VFname: {
                                 required: "Please provide First Name"
-                            },
-                            VLname: {
-                                required: "Please provide Last Name"
                             },
                             Vemail: {
                                 required: "Please enter a valid email address",
@@ -495,7 +531,7 @@
                             Vcity: {
                                 required: "Please provide your city"
                             },
-                            Vcountry: {
+                            Vstate: {
                                 required: "Please provide your Country Name"
                             },
                             Vcode: {
@@ -510,38 +546,82 @@
                                 maxlength: "Invalid Mobile Number",
                                 maxlength: "Invalid Mobile Number"
                             }
-                        },
-                        submitHandler: function (form) {
-
-                            $.ajax({
-
-                                url: "script.php",
-                                type: "post",
-                                data: $("#customer").serialize(),
-                                success: function (d) {
-
-                                    if (d == 'success') {
-
-                                        toastr["success"]("Order Created.", "Saved");
-
-
-                                    } if (d == 'error') {
-
-                                        toastr["error"]("Something Not right. Try again Later.", "Error");
-
-                                    } if (d == 'Cerror') {
-
-                                        toastr["error"]("Something Not right. Try again Later.", "Error");
-                                    }
-                                }
-
-                            });
-
                         }
-
                     });
+                    var n = $("input[name=courier_id]:checked").val()
+                    n = parseInt(n)
+                    var n1 = $('#code').val()
+                    n1 = parseInt(n1)
+                    var u1 = $('#units').val()
+                    var u1 = parseInt(u1)
+                    p.preventDefault();
+                    var l1 = $('#length').val()
+                    l1 = parseInt(l1)
+                    var b1 = $('#breath').val()
+                    b1 = parseInt(b1)
+                    var h1 = $('#height').val()
+                    h1 = parseInt(h1)
+                    var vm = $('#Vmobile').val()
+                    vm = parseInt(vm)
+                    var vp = $('#Vcode').val()
+                    vp = parseInt(vp)
+                    var settings = {
+                        url: "http://localhost:3000/createOrder",
+                        "method": "POST",
+                        "timeout": 0,
+                        "headers": {
+                            "Content-Type": "application/json",
+                            'Authorization': token
 
-
+                        },
+                        data: JSON.stringify({
+                            "courier_id": n,
+                            "billing_customer_name": $('#Fname').val(),
+                            "billing_last_name": $('#Lname').val(),
+                            "billing_address": document.getElementById('Baddress').value,
+                            "billing_address_2": "aaa",
+                            "billing_city": $('#city').val(),
+                            "billing_state": $('#state').val(),
+                            "billing_country": "INDIA",
+                            "billing_pincode": n1,
+                            "billing_email": $('#email').val(),
+                            "billing_phone": $('#mobile').val(),
+                            "shipping_is_billing": true,
+                            "order_items": [
+                                {
+                                    "name": $('#packageName').val(),
+                                    "sku": $('#sku').val(),
+                                    "units": u1,
+                                    "selling_price": $('#sellingPrice').val()
+                                }
+                            ],
+                            "weight": $('#weight').val(),
+                            "length": l1,
+                            "breadth": b1,
+                            "height": h1,
+                            "vendor_details": {
+                                "email": $('#Vemail').val(),
+                                "phone": vm,
+                                "name": $('#VFname').val(),
+                                "address": $('#Vaddress').val(),
+                                "address_2": "aaa",
+                                "city": $('#Vcity').val(),
+                                "state": $('#Vstate').val(),
+                                "country": "INDIA",
+                                "pin_code": vp
+                            }
+                        })
+                    }
+                    $.ajax(settings).done(function (data) {
+                        if (data.status == 200) {
+                            toastr["warning"](data.message, "");
+                        } else {
+                            toastr["success"]("Your order has been booked. Downloading Label", "Successful");
+                            window.setTimeout(function () {
+                                window.location.href = data.label_url;
+                            }, 3000);
+                        }
+                    });
                 });
 
                 $('#code').keyup(function () {
